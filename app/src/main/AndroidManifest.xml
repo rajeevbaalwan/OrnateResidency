@@ -9,13 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/MaterialTheme.Base">
         <activity android:name=".Activities.LoginActivity">
+        </activity>
+        <activity android:name=".Activities.BaseLoginActivity">
+        </activity>
+        <activity android:name=".Activities.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.BaseLoginActivity"></activity>
     </application>
 
 </manifest>
