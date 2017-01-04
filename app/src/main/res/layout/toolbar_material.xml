@@ -10,7 +10,6 @@
     android:minHeight="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:layout_scrollFlags="scroll|enterAlways|snap"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:elevation="0dp">
 
