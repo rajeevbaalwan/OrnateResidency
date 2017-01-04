@@ -34,8 +34,8 @@ public class LoginActivity extends BaseLoginActivity {
         if (sharedPrefUtil.isLoggedIn()){
 
             Intent inte = new Intent(LoginActivity.this,LandingActivity.class);
-            inte.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(inte);
+            this.finish();
         }
         googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
