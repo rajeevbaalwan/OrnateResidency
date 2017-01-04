@@ -12,13 +12,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.SharedPrefUtil;
 
 public class LoginActivity extends BaseLoginActivity {
 
 
     private SignInButton googleSignInButton;
     private static final int RC_GOOGLE_SIGN_IN = 574;
+    private SharedPrefUtil sharedPrefUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,14 @@ public class LoginActivity extends BaseLoginActivity {
         setContentView(R.layout.activity_login);
 
         googleSignInButton = (SignInButton) findViewById(R.id.google_sign_in_btn);
+        sharedPrefUtil = new SharedPrefUtil(LoginActivity.this);
+
+        if (sharedPrefUtil.isLoggedIn()){
+
+            Intent inte = new Intent(LoginActivity.this,LandingActivity.class);
+            inte.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(inte);
+        }
         googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +58,12 @@ public class LoginActivity extends BaseLoginActivity {
 
                 GoogleSignInAccount googleSignInAccount = googleSignInResult.getSignInAccount();
                 Log.d("HRE IS",googleSignInAccount.getDisplayName());
+
+                sharedPrefUtil.startLoginSession(new User(googleSignInAccount.getDisplayName(),googleSignInAccount.getEmail()));
+                Intent intent = new Intent(LoginActivity.this,LandingActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
             }
         }
     }
