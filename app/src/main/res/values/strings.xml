@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ornate Residency</string>
+    <string name="GuestHouse">Guest House</string>
+    <string name="pg">PG</string>
 </resources>
