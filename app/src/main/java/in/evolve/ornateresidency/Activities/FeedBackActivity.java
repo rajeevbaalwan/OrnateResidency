@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import in.evolve.ornateresidency.R;
 
-public class FeedbackActivity extends AppCompatActivity {
+public class FeedBackActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
@@ -37,7 +37,7 @@ public class FeedbackActivity extends AppCompatActivity {
 
         if(item.getItemId()==android.R.id.home)
         {
-            FeedbackActivity.this.finish();
+            FeedBackActivity.this.finish();
         }
 
 

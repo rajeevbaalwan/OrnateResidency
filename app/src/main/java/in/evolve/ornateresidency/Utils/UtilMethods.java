@@ -12,17 +12,13 @@ public class UtilMethods {
 
     public static void toastS(Context context,String s){
 
-        Toast toast = new Toast(context);
-        toast.setText(s);
-        toast.setDuration(Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(context,s,Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER,0,0);
         toast.show();
     }
 
     public static void toastL(Context context,String s){
-        Toast toast = new Toast(context);
-        toast.setText(s);
-        toast.setDuration(Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(context,s,Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER,0,0);
         toast.show();
     }

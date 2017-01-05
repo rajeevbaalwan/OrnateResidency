@@ -13,4 +13,9 @@
     <string name="hint_mobile">Mobile No.</string>
     <string name="hint_property_address">Address</string>
     <string name="hint_number_rooms">No. Of Rooms :</string>
+    <string name="text_login">Login</string>
+    <string name="enter_phone_number">Mobile Number</string>
+    <string name="submit_otp">Submit OTP</string>
+    <string name="submit_btn">Submit</string>
+    <string name="fill_details">Fill These Details</string>
 </resources>

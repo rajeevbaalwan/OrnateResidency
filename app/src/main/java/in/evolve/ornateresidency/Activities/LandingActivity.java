@@ -91,7 +91,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
                 break;
             case R.id.fab_feedback:
-                Intent intent=new Intent(this,FeedbackActivity.class);
+                Intent intent=new Intent(this,FeedBackActivity.class);
                 startActivity(intent);
                 showMenu();
                 break;
