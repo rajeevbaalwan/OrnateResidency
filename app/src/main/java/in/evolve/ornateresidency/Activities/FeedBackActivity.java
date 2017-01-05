@@ -12,7 +12,8 @@ import in.evolve.ornateresidency.R;
  */
 public class FeedBackActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
+
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);

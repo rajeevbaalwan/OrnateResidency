@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="in.evolve.ornateresidency">
 
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -18,8 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.LandingActivity" />
-        <activity android:name=".Activities.ListYourPlaceActivity"/>
-        <activity android:name=".Activities.FeedBackActivity"/>
+        <activity android:name=".Activities.ListYourPlaceActivity" />
+        <activity android:name=".Activities.FeedBackActivity" />
+        <activity android:name=".Activities.MyAccountActivity"></activity>
     </application>
 
 </manifest>
