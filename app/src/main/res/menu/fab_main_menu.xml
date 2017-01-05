@@ -2,21 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:icon="@drawable/ic_my_acc"
         android:id="@+id/myAccount"
         android:title="@string/fab_my_account"/>
 
     <item
-        android:id="@+id/retntYourPG"
+        android:icon="@drawable/ic_call_us"
+        android:id="@+id/rentYourPG"
         android:title="@string/fab_list_pg"/>
+    <item
+        android:icon="@drawable/ic_faq"
+        android:id="@+id/showFaq"
+        android:title="@string/fab_show_faq"/>
 
     <item
+        android:icon="@drawable/ic_call_us"
         android:id="@+id/callUs"
         android:title="@string/fab_call_us"/>
+
     <item
+        android:icon="@drawable/ic_feedback"
         android:id="@+id/feedback"
         android:title="@string/fab_feedback"/>
 
     <item
+        android:icon="@drawable/ic_share"
         android:id="@+id/shareApp"
         android:title="@string/fab_share_app"/>
 

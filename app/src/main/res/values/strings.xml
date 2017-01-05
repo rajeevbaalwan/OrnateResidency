@@ -7,4 +7,5 @@
     <string name="fab_list_pg">List Your Property</string>
     <string name="fab_share_app">Share App</string>
     <string name="fab_feedback">Feedback</string>
+    <string name="fab_show_faq">FAQ</string>
 </resources>
