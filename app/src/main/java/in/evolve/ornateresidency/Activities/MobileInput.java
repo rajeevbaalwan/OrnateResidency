@@ -14,8 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
@@ -28,8 +31,8 @@ public class MobileInput extends AppCompatActivity {
     private FloatingActionButton sendOtpRequest;
     private String OTP = "1111";
     private SharedPrefUtil sharedPrefUtil;
-    private Dialog otpDialog;
-    private Dialog addInfoDialog;
+    private MaterialDialog otpDialog;
+    private MaterialDialog addInfoDialog;
     private String phoneNumber;
     private Toolbar toolbar;
 
@@ -74,16 +77,18 @@ public class MobileInput extends AppCompatActivity {
 
         String phone = phoneInput.getText().toString();
         phoneNumber = phone;
-        otpDialog = new Dialog(MobileInput.this);
-        otpDialog.setCancelable(false);
-        otpDialog.setContentView(getOtpDialogView());
+        otpDialog = new MaterialDialog.Builder(MobileInput.this)
+                .cancelable(false)
+                .customView(getOtpDialogView(),false)
+                .build();
+
         otpDialog.show();
 
     }
 
     private View getOtpDialogView(){
 
-        View view = LayoutInflater.from(MobileInput.this).inflate(R.layout.custom_input_dialog,new LinearLayout(MobileInput.this),false);
+        View view = LayoutInflater.from(MobileInput.this).inflate(R.layout.custom_input_dialog,new RelativeLayout(MobileInput.this),false);
 
         TextView title = (TextView) view.findViewById(R.id.custom_input_dialog_title);
         title.setText("Enter The Otp :");
@@ -112,9 +117,10 @@ public class MobileInput extends AppCompatActivity {
     private void checkUserRegisterdOnServer(){
        // getInfoDialogView();
 
-        addInfoDialog = new Dialog(MobileInput.this);
-        addInfoDialog.setCancelable(false);
-        addInfoDialog.setContentView(getInfoDialogView());
+        addInfoDialog = new MaterialDialog.Builder(MobileInput.this)
+                .cancelable(false)
+                .customView(getInfoDialogView(),false)
+                .build();
         addInfoDialog.show();
 
     }
