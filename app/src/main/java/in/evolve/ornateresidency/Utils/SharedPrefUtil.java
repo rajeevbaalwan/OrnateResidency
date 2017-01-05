@@ -14,7 +14,11 @@ public class SharedPrefUtil {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String KEY_USER_NAME = "user_name";
+    private String KEY_USER_DOB = "user_email";
+    private String KEY_USER_PHONE = "user_gender";
     private String KEY_USER_EMAIL = "user_email";
+    private String KEY_USER_GENDER = "user_gender";
+
     private String IS_LOGGED_IN = "is_logged_in";
     private String FILE_NAME  = "ornate_shared_pref";
     private Context context;
@@ -34,13 +38,17 @@ public class SharedPrefUtil {
         editor.putBoolean(IS_LOGGED_IN,true);
         editor.putString(KEY_USER_NAME,user.getUserName());
         editor.putString(KEY_USER_EMAIL,user.getUserEmail());
+        editor.putString(KEY_USER_DOB,user.getDob());
+        editor.putString(KEY_USER_GENDER,user.getUserGender());
+        editor.putString(KEY_USER_PHONE,user.getUserPhone());
         editor.commit();
 
     }
 
     public User getLoggedInUser(User user){
         return new User(sharedPreferences.getString(KEY_USER_NAME,null),
-                sharedPreferences.getString(KEY_USER_EMAIL,null));
+                sharedPreferences.getString(KEY_USER_EMAIL,null),sharedPreferences.getString(KEY_USER_GENDER,null),
+                sharedPreferences.getString(KEY_USER_PHONE,null),sharedPreferences.getString(KEY_USER_DOB,null));
     }
 
     public boolean isLoggedIn(){

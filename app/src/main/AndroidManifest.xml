@@ -20,7 +20,8 @@
         <activity android:name=".Activities.LandingActivity" />
         <activity android:name=".Activities.ListYourPlaceActivity" />
         <activity android:name=".Activities.FeedBackActivity" />
-        <activity android:name=".Activities.MyAccountActivity"></activity>
+        <activity android:name=".Activities.MyAccountActivity" />
+        <activity android:name=".Activities.SearchActivity"></activity>
     </application>
 
 </manifest>
