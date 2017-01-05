@@ -8,4 +8,9 @@
     <string name="fab_share_app">Share App</string>
     <string name="fab_feedback">Feedback</string>
     <string name="fab_show_faq">FAQ</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_mobile">Mobile No.</string>
+    <string name="hint_property_address">Address</string>
+    <string name="hint_number_rooms">No. Of Rooms :</string>
 </resources>
