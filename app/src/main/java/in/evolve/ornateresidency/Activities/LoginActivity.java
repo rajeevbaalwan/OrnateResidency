@@ -50,10 +50,11 @@ public class LoginActivity extends BaseLoginActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d( "Login","eworking here");
         if(requestCode == RC_GOOGLE_SIGN_IN && resultCode == RESULT_OK){
 
             GoogleSignInResult googleSignInResult = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-           // Log.d("HRE IS","MAY BE NOT WORKING ");
+            Log.d("HRE IS","MAY BE NOT WORKING ");
             if(googleSignInResult.isSuccess()){
 
                 GoogleSignInAccount googleSignInAccount = googleSignInResult.getSignInAccount();
@@ -64,6 +65,10 @@ public class LoginActivity extends BaseLoginActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
+            }
+            else
+            {
+               Log.d( "Login",googleSignInResult.getStatus().getStatusMessage());
             }
         }
     }
