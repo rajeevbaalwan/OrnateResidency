@@ -44,11 +44,11 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         shareApp= (TextView) findViewById(R.id.fab_share_app);
         feedBack= (TextView) findViewById(R.id.fab_feedback);
 
-        myAccount.setOnClickListener((View.OnClickListener) this);
-        pgList.setOnClickListener((View.OnClickListener) this);
-        showFaq.setOnClickListener((View.OnClickListener) this);
-        shareApp.setOnClickListener((View.OnClickListener) this);
-        feedBack.setOnClickListener((View.OnClickListener) this);
+        myAccount.setOnClickListener(this);
+        pgList.setOnClickListener(this);
+        showFaq.setOnClickListener(this);
+        shareApp.setOnClickListener(this);
+        feedBack.setOnClickListener(this);
     }
 
     public  void onClick(View v)
