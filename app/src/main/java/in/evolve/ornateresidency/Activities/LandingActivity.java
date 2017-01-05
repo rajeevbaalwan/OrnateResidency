@@ -1,32 +1,119 @@
 package in.evolve.ornateresidency.Activities;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
+import android.content.Intent;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import in.evolve.ornateresidency.R;
 
 public class LandingActivity extends AppCompatActivity {
 
-    FloatingActionButton fab;
+    private FloatingActionButton fab;
+    private LinearLayout mRevealView;
+    private boolean hidden=true;
+    private TextView myAccount;
+    private TextView pgList;
+    private TextView showFaq;
+    private TextView shareApp;
+    private TextView feedBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
         fab= (FloatingActionButton) findViewById(R.id.landing_fab);
+        mRevealView= (LinearLayout) findViewById(R.id.fab_layout);
+        mRevealView.setVisibility(View.INVISIBLE);
 
+        myAccount= (TextView) findViewById(R.id.my_account);
+        pgList= (TextView) findViewById(R.id.fab_list_pg);
+        showFaq= (TextView) findViewById(R.id.showFaq);
+        shareApp= (TextView) findViewById(R.id.fab_share_app);
+        feedBack= (TextView) findViewById(R.id.fab_feedback);
+
+        myAccount.setOnClickListener((View.OnClickListener) this);
+        pgList.setOnClickListener((View.OnClickListener) this);
+        showFaq.setOnClickListener((View.OnClickListener) this);
+        shareApp.setOnClickListener((View.OnClickListener) this);
+        feedBack.setOnClickListener((View.OnClickListener) this);
     }
 
-    public void ShowMenu(View v)
+    public  void onClick(View v)
     {
-        PopupMenu popupMenu=new PopupMenu(this,v);
+        switch(v.getId())
+        {
+            case R.id.my_account:
+            case R.id.fab_list_pg:
+            case R.id.showFaq:
+            case R.id.fab_share_app:
+            case R.id.fab_feedback:
+                Intent intent=new Intent(this,FeedBackActivity.class);
+                startActivity(intent);
+                mRevealView.setVisibility(View.INVISIBLE);
+                hidden=true;
+                break;
+        }
+    }
 
-        MenuInflater inflater=popupMenu.getMenuInflater();
-        inflater.inflate(R.menu.fab_main_menu,popupMenu.getMenu());
-        popupMenu.show();
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void ShowMenu(View v) {
+        fab.setVisibility(View.INVISIBLE);
+        // finding X and Y co-ordinates
+        int cx = (mRevealView.getRight());
+        int cy = (mRevealView.getTop());
+
+        // to find  radius when icon is tapped for showing layout
+        int startradius = 0;
+        int endradius = Math.max(mRevealView.getWidth(), mRevealView.getHeight());
+
+        // performing circular reveal when icon will be tapped
+        Animator animator = ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, startradius, endradius);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.setDuration(300);
+
+        //reverse animation
+        // to find radius when icon is tapped again for hiding layout
+        //  starting radius will be the radius or the extent to which circular reveal animation is to be shown
+
+        int reverse_startradius = Math.max(mRevealView.getWidth(), mRevealView.getHeight());
+
+        //endradius will be zero
+        int reverse_endradius = 0;
+
+        // performing circular reveal for reverse animation
+        Animator animate = ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, reverse_startradius, reverse_endradius);
+        if (hidden) {
+
+            // to show the layout when icon is tapped
+            mRevealView.setVisibility(View.VISIBLE);
+            animator.start();
+            hidden = false;
+        } else {
+            mRevealView.setVisibility(View.VISIBLE);
+
+            // to hide layout on animation end
+            animate.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    mRevealView.setVisibility(View.INVISIBLE);
+                    hidden = true;
+                }
+            });
+            animate.start();
+        }
     }
 }

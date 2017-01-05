@@ -3,8 +3,10 @@
     android:background="@android:color/white"
     android:layout_marginLeft="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="250dp"
-    android:layout_height="wrap_content">
+    android:orientation="vertical"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    >
 
 
     <LinearLayout
@@ -20,10 +22,11 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/my_account"
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="@string/fab_my_account"
+            android:text="fab_my_account"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -44,10 +47,11 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/fab_list_pg"
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="@string/fab_list_pg"
+            android:text="fab_list_pg"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -68,10 +72,11 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/fab_show_pg"
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="@string/fab_show_faq"
+            android:text="fab_show_faq"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -92,10 +97,11 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/fab_call_us"
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="@string/fab_call_us"
+            android:text="fab_call_us"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -115,10 +121,11 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/fab_share_app"
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="@string/fab_share_app"
+            android:text="fab_share_app"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -139,10 +146,11 @@
         android:layout_weight="0.1"
         android:layout_height="match_parent" />
     <TextView
+        android:id="@+id/fab_feedback"
         android:layout_marginLeft="15dp"
         android:textSize="18sp"
         android:textColor="@android:color/black"
-        android:text="@string/fab_feedback"
+        android:text="fab_feedback"
         android:layout_width="0dp"
         android:layout_gravity="center"
         android:layout_weight="0.9"
