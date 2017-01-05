@@ -11,8 +11,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public abstract class BaseLoginActivity extends AppCompatActivity  implements GoogleApiClient.OnConnectionFailedListener{
 
-     GoogleApiClient googleApiClient;
-     GoogleSignInOptions googleSignInOptions;
+    GoogleApiClient googleApiClient;
+    GoogleSignInOptions googleSignInOptions;
     private static final String TAG = "BaseLoginActivity";
 
 

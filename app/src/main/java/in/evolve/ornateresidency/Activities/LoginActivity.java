@@ -53,7 +53,7 @@ public class LoginActivity extends BaseLoginActivity {
         if(requestCode == RC_GOOGLE_SIGN_IN && resultCode == RESULT_OK){
 
             GoogleSignInResult googleSignInResult = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            Log.d("HRE IS","MAY BE NOT WORKING ");
+           // Log.d("HRE IS","MAY BE NOT WORKING ");
             if(googleSignInResult.isSuccess()){
 
                 GoogleSignInAccount googleSignInAccount = googleSignInResult.getSignInAccount();
