@@ -91,7 +91,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
                 break;
             case R.id.fab_feedback:
-                Intent intent=new Intent(this,FeedBackActivity.class);
+                Intent intent=new Intent(this,FeedbackActivity.class);
                 startActivity(intent);
                 showMenu();
                 break;
@@ -112,7 +112,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         // performing circular reveal when icon will be tapped
         Animator animator = ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, startradius, endradius);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
-        animator.setDuration(300);
+        animator.setDuration(150);
 
         //reverse animation
         // to find radius when icon is tapped again for hiding layout

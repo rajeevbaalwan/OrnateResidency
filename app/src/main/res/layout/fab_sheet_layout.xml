@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@android:color/white"
-    android:layout_marginLeft="10dp"
+    android:background="@drawable/round_rect_fab_menu"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="250dp"
-    android:layout_height="wrap_content"
-    >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
         android:id="@+id/my_account"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,7 +25,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="fab_my_account"
+            android:text="@string/fab_my_account"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -37,7 +35,7 @@
 
     <LinearLayout
         android:id="@+id/fab_list_pg"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -53,7 +51,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="fab_list_pg"
+            android:text="@string/fab_list_pg"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -63,7 +61,7 @@
 
     <LinearLayout
         android:id="@+id/fab_show_faq"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -79,7 +77,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="fab_show_faq"
+            android:text="@string/fab_show_faq"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -89,7 +87,7 @@
 
     <LinearLayout
         android:id="@+id/fab_call_us"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -105,7 +103,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="fab_call_us"
+            android:text="@string/fab_call_us"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -114,7 +112,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/fab_share_app"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -130,7 +128,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="fab_share_app"
+            android:text="@string/fab_share_app"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="0.9"
@@ -140,7 +138,7 @@
     <LinearLayout
         android:id="@+id/fab_feedback"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -156,7 +154,7 @@
         android:layout_marginLeft="15dp"
         android:textSize="18sp"
         android:textColor="@android:color/black"
-        android:text="fab_feedback"
+        android:text="@string/fab_feedback"
         android:layout_width="0dp"
         android:layout_gravity="center"
         android:layout_weight="0.9"

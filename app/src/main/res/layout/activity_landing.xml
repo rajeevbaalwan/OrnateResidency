@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/landing_image2"
+    android:id="@+id/landing_layout"
     tools:context="in.evolve.ornateresidency.Activities.LandingActivity">
 
     <LinearLayout
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_centerInParent="true"
+        android:layout_above="@+id/searcch"
         android:padding="4dp"
         android:id="@+id/landing_radio_button">
         <RadioButton
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/GuestHouse"
             android:textSize="16sp"
-            android:buttonTint="#e75748"
+            android:buttonTint="#ffffff"
             android:textColor="@android:color/white"
             android:layout_margin="4dp"
             android:id="@+id/guest_house_radiobutton"/>
@@ -29,18 +30,19 @@
             android:layout_height="wrap_content"
             android:text="@string/pg"
             android:textSize="16sp"
-            android:buttonTint="#e75748"
+            android:buttonTint="#ffffff"
             android:textColor="@android:color/white"
             android:layout_margin="4dp"
             android:id="@+id/pg_radiobutton"/>
     </LinearLayout>
 
     <TextView
+        android:layout_above="@+id/fab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/landing_radio_button"
         android:background="@drawable/round_rect_shape"
         android:text="Search Here"
+        android:id="@+id/searcch"
         android:textSize="25sp"
         android:padding="5dp"
         android:gravity="center"
@@ -48,12 +50,12 @@
 
     <include
         android:id="@+id/fab_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         layout="@layout/fab_sheet_layout"/>
 
      <android.support.design.widget.FloatingActionButton
