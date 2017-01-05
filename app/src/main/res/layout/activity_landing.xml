@@ -21,7 +21,8 @@
             android:textSize="16sp"
             android:buttonTint="#e75748"
             android:textColor="@android:color/white"
-            android:layout_margin="4dp"/>
+            android:layout_margin="4dp"
+            android:id="@+id/guest_house_radiobutton"/>
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -30,7 +31,8 @@
             android:textSize="16sp"
             android:buttonTint="#e75748"
             android:textColor="@android:color/white"
-            android:layout_margin="4dp"/>
+            android:layout_margin="4dp"
+            android:id="@+id/pg_radiobutton"/>
     </LinearLayout>
 
     <TextView
@@ -43,5 +45,13 @@
         android:padding="5dp"
         android:gravity="center"
         android:layout_margin="10dp"/>
+     <android.support.design.widget.FloatingActionButton
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:src="@android:drawable/ic_menu_add"
+         android:padding="10dp"
+         android:id="@+id/landing_fab"
+         android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
