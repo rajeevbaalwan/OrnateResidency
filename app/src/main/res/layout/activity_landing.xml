@@ -66,6 +66,6 @@
          android:padding="10dp"
          android:id="@+id/landing_fab"
          android:layout_alignParentRight="true"
-         android:onClick="ShowMenu"/>
+         />
 
 </RelativeLayout>

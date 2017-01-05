@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -29,6 +30,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     private LinearLayout showFaq;
     private LinearLayout shareApp;
     private LinearLayout feedBack;
+    private LinearLayout callUs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +41,26 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         mRevealView= (LinearLayout) findViewById(R.id.fab_layout);
         mRevealView.setVisibility(View.INVISIBLE);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showMenu();
+            }
+        });
+
         myAccount= (LinearLayout) findViewById(R.id.my_account);
         pgList= (LinearLayout) findViewById(R.id.fab_list_pg);
         showFaq= (LinearLayout) findViewById(R.id.fab_show_faq);
         shareApp= (LinearLayout) findViewById(R.id.fab_share_app);
         feedBack= (LinearLayout) findViewById(R.id.fab_feedback);
+        callUs = (LinearLayout) findViewById(R.id.fab_call_us);
 
         myAccount.setOnClickListener(this);
         pgList.setOnClickListener(this);
         showFaq.setOnClickListener(this);
         shareApp.setOnClickListener(this);
         feedBack.setOnClickListener(this);
+        callUs.setOnClickListener(this);
     }
 
     public  void onClick(View v)
@@ -57,10 +68,12 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         switch(v.getId())
         {
             case R.id.my_account:
+                showMenu();
                 break;
             case R.id.fab_list_pg:
                 Intent listPg = new Intent(LandingActivity.this,ListYourPlaceActivity.class);
                 startActivity(listPg);
+                showMenu();
                 break;
             case R.id.showFaq:
                 break;
@@ -69,25 +82,24 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_TEXT, "I am sharing my app::");
                 startActivity(Intent.createChooser(i,"Share via:"));
-
-
+                showMenu();
                 break;
             case R.id.fab_call_us:
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(OWNER_PHONE);
                 startActivity(callIntent);
+                showMenu();
                 break;
             case R.id.fab_feedback:
                 Intent intent=new Intent(this,FeedBackActivity.class);
                 startActivity(intent);
-                mRevealView.setVisibility(View.INVISIBLE);
-                hidden=true;
+                showMenu();
                 break;
         }
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void ShowMenu(View v) {
+    public void showMenu() {
         fab.setVisibility(View.INVISIBLE);
         // finding X and Y co-ordinates
         int cx = (mRevealView.getRight());
@@ -128,10 +140,32 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
                     mRevealView.setVisibility(View.INVISIBLE);
+                    fab.setVisibility(View.VISIBLE);
                     hidden = true;
                 }
             });
             animate.start();
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if(mRevealView.getVisibility() == View.VISIBLE){
+            showMenu();
+        }
+
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mRevealView.getVisibility() == View.VISIBLE){
+            showMenu();
+            return;
+        }
+
+        super.onBackPressed();
+
     }
 }
