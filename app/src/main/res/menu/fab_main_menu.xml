@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/myAccount"
+        android:title="@string/fab_my_account"/>
+
+    <item
+        android:id="@+id/retntYourPG"
+        android:title="@string/fab_list_pg"/>
+
+    <item
+        android:id="@+id/callUs"
+        android:title="@string/fab_call_us"/>
+    <item
+        android:id="@+id/feedback"
+        android:title="@string/fab_feedback"/>
+
+    <item
+        android:id="@+id/shareApp"
+        android:title="@string/fab_share_app"/>
+
+
+
+</menu>
