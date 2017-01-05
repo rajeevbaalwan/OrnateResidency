@@ -76,7 +76,7 @@ public class ListYourPlaceActivity extends AppCompatActivity {
     private boolean validateNumberOfRooms() {
         if (numberOfRoomsInput.getText().toString().trim().isEmpty()) {
             numberofRoomsInputLayout.setError("Enter Number Of Rooms");
-            requestFocus(nameInput);
+
             return false;
         } else {
            numberofRoomsInputLayout.setErrorEnabled(false);
@@ -89,7 +89,7 @@ public class ListYourPlaceActivity extends AppCompatActivity {
     private boolean validateName() {
         if (nameInput.getText().toString().trim().isEmpty()) {
             nameInputLayout.setError("Enter A Valid Name");
-            requestFocus(nameInput);
+
             return false;
         } else {
             nameInputLayout.setErrorEnabled(false);
@@ -103,7 +103,7 @@ public class ListYourPlaceActivity extends AppCompatActivity {
 
         if (email.isEmpty() || !isValidEmail(email)) {
             emailInputLayout.setError("Enter Valid Email");
-            requestFocus(emailInput);
+
             return false;
         } else {
             emailInputLayout.setErrorEnabled(false);
@@ -117,7 +117,7 @@ public class ListYourPlaceActivity extends AppCompatActivity {
 
         if (phone.isEmpty() || phone.length()!=10) {
             phoneInputLayout.setError("Enter Valid Mobile Number");
-            requestFocus(phoneInput);
+
             return false;
         } else {
             phoneInputLayout.setErrorEnabled(false);
@@ -129,7 +129,7 @@ public class ListYourPlaceActivity extends AppCompatActivity {
     private boolean validateAddress() {
         if (addressInput.getText().toString().trim().isEmpty()) {
             addressInputLayout.setError("Enter Valid Address");
-            requestFocus(addressInput);
+
             return false;
         } else {
             addressInputLayout.setErrorEnabled(false);

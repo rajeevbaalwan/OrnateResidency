@@ -17,17 +17,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.Constants;
 
-public class LandingActivity extends AppCompatActivity implements View.OnClickListener{
+public class LandingActivity extends AppCompatActivity implements View.OnClickListener,Constants{
 
     private FloatingActionButton fab;
     private LinearLayout mRevealView;
     private boolean hidden=true;
-    private TextView myAccount;
-    private TextView pgList;
-    private TextView showFaq;
-    private TextView shareApp;
-    private TextView feedBack;
+    private LinearLayout myAccount;
+    private LinearLayout pgList;
+    private LinearLayout showFaq;
+    private LinearLayout shareApp;
+    private LinearLayout feedBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +39,11 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         mRevealView= (LinearLayout) findViewById(R.id.fab_layout);
         mRevealView.setVisibility(View.INVISIBLE);
 
-        myAccount= (TextView) findViewById(R.id.my_account);
-        pgList= (TextView) findViewById(R.id.fab_list_pg);
-        showFaq= (TextView) findViewById(R.id.showFaq);
-        shareApp= (TextView) findViewById(R.id.fab_share_app);
-        feedBack= (TextView) findViewById(R.id.fab_feedback);
+        myAccount= (LinearLayout) findViewById(R.id.my_account);
+        pgList= (LinearLayout) findViewById(R.id.fab_list_pg);
+        showFaq= (LinearLayout) findViewById(R.id.fab_show_faq);
+        shareApp= (LinearLayout) findViewById(R.id.fab_share_app);
+        feedBack= (LinearLayout) findViewById(R.id.fab_feedback);
 
         myAccount.setOnClickListener(this);
         pgList.setOnClickListener(this);
@@ -56,9 +57,26 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         switch(v.getId())
         {
             case R.id.my_account:
+                break;
             case R.id.fab_list_pg:
+                Intent listPg = new Intent(LandingActivity.this,ListYourPlaceActivity.class);
+                startActivity(listPg);
+                break;
             case R.id.showFaq:
+                break;
             case R.id.fab_share_app:
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_TEXT, "I am sharing my app::");
+                startActivity(Intent.createChooser(i,"Share via:"));
+
+
+                break;
+            case R.id.fab_call_us:
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(OWNER_PHONE);
+                startActivity(callIntent);
+                break;
             case R.id.fab_feedback:
                 Intent intent=new Intent(this,FeedBackActivity.class);
                 startActivity(intent);

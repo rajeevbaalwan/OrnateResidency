@@ -7,15 +7,15 @@
     tools:context="in.evolve.ornateresidency.Activities.ListYourPlaceActivity">
 
     <include layout="@layout/toolbar_material"
-        android:id="@id/toolbar"/>
+        android:id="@+id/toolbar"/>
 
     <ScrollView
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     <LinearLayout
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@
 
 
     <LinearLayout
+        android:id="@+id/my_account"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
-            android:id="@+id/my_account"
+
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
@@ -35,6 +36,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/fab_list_pg"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -47,7 +49,7 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
-            android:id="@+id/fab_list_pg"
+
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
@@ -60,6 +62,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/fab_show_faq"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -72,7 +75,7 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
-            android:id="@+id/fab_show_pg"
+
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
@@ -85,6 +88,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/fab_call_us"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -97,7 +101,7 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
-            android:id="@+id/fab_call_us"
+
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
@@ -109,6 +113,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/fab_share_app"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -121,7 +126,7 @@
             android:layout_weight="0.1"
             android:layout_height="match_parent" />
         <TextView
-            android:id="@+id/fab_share_app"
+
             android:layout_marginLeft="15dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
@@ -133,11 +138,12 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/fab_feedback"
         android:layout_marginBottom="20dp"
-    android:layout_marginTop="20dp"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <ImageView
         android:layout_marginLeft="10dp"
@@ -146,7 +152,7 @@
         android:layout_weight="0.1"
         android:layout_height="match_parent" />
     <TextView
-        android:id="@+id/fab_feedback"
+
         android:layout_marginLeft="15dp"
         android:textSize="18sp"
         android:textColor="@android:color/black"
