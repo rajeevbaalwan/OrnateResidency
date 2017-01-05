@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import in.evolve.ornateresidency.R;
 
-public class LandingActivity extends AppCompatActivity {
+public class LandingActivity extends AppCompatActivity implements View.OnClickListener{
 
     private FloatingActionButton fab;
     private LinearLayout mRevealView;
