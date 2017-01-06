@@ -3,7 +3,7 @@
     android:background="@drawable/round_rect_fab_menu"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
 
@@ -15,20 +15,19 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:paddingLeft="70dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_my_acc"
             android:layout_width="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
-
-            android:layout_marginLeft="15dp"
+            android:gravity="left"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:text="@string/fab_my_account"
             android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.9"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -41,23 +40,24 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:paddingLeft="70dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_my_acc"
             android:layout_width="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.4"
+            android:gravity="right"
             android:layout_height="match_parent" />
         <TextView
-
-            android:layout_marginLeft="15dp"
+            android:gravity="left"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:text="@string/fab_list_pg"
             android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.9"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/fab_show_faq"
@@ -67,20 +67,19 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:paddingLeft="70dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_faq"
             android:layout_width="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
-
-            android:layout_marginLeft="15dp"
+            android:gravity="left"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:text="@string/fab_show_faq"
             android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.9"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -93,23 +92,23 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:paddingLeft="70dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_call_us"
             android:layout_width="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
-
-            android:layout_marginLeft="15dp"
+            android:gravity="left"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:text="@string/fab_call_us"
             android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.9"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/fab_share_app"
         android:layout_margin="10dp"
@@ -118,23 +117,24 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:paddingLeft="70dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_share"
             android:layout_width="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
-
-            android:layout_marginLeft="15dp"
+            android:gravity="left"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:text="@string/fab_share_app"
             android:layout_width="0dp"
             android:layout_gravity="center"
-            android:layout_weight="0.9"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/fab_feedback"
         android:layout_marginBottom="20dp"
@@ -144,20 +144,19 @@
         android:layout_height="wrap_content">
 
     <ImageView
+        android:paddingLeft="70dp"
         android:layout_marginLeft="10dp"
         android:src="@drawable/ic_feedback"
         android:layout_width="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.4"
         android:layout_height="match_parent" />
     <TextView
-
-        android:layout_marginLeft="15dp"
+        android:gravity="left"
         android:textSize="18sp"
         android:textColor="@android:color/black"
         android:text="@string/fab_feedback"
         android:layout_width="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.9"
+        android:layout_weight="0.6"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

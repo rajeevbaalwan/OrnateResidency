@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Ornate Residency</string>
     <string name="GuestHouse">Guest House</string>
-    <string name="pg">PG</string>
+    <string name="pg">Paying Guest</string>
     <string name="fab_my_account">My Account</string>
     <string name="fab_call_us">Call Us</string>
     <string name="fab_list_pg">Pg List</string>

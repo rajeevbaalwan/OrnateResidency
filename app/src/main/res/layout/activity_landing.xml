@@ -3,60 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/landing_image2"
     android:id="@+id/landing_layout"
-    tools:context="in.evolve.ornateresidency.Activities.LandingActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_above="@+id/searcch"
-        android:padding="4dp"
-        android:id="@+id/landing_radio_button">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GuestHouse"
-            android:textSize="16sp"
-            android:buttonTint="#ffffff"
-            android:textColor="@android:color/white"
-            android:layout_margin="4dp"
-            android:id="@+id/guest_house_radiobutton"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pg"
-            android:textSize="16sp"
-            android:buttonTint="#ffffff"
-            android:textColor="@android:color/white"
-            android:layout_margin="4dp"
-            android:id="@+id/pg_radiobutton"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_above="@+id/fab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_rect_shape"
-        android:text="Search Here"
-        android:id="@+id/searcch"
-        android:textSize="25sp"
-        android:padding="5dp"
-        android:gravity="center"
-        android:layout_margin="10dp"/>
+    tools:context="in.evolve.ornateresidency.Activities.LandingActivity"
+    android:background="@drawable/pg">
 
     <include
         android:id="@+id/fab_layout"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
         layout="@layout/fab_sheet_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@id/fab_layout"
+        android:padding="4dp"
+        android:gravity="center"
+        android:id="@+id/landing_radio_button">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/GuestHouse"
+            android:textSize="20sp"
+            android:buttonTint="#ffffff"
+            android:textColor="@android:color/white"
+            android:paddingLeft="60dp"
+            android:background="@drawable/landing_round_button"
+            android:paddingRight="60dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_margin="5dp"
+            android:id="@+id/guest_house_radiobutton"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pg"
+            android:textSize="20sp"
+            android:buttonTint="#ffffff"
+            android:background="@drawable/landing_round_button"
+            android:textColor="@android:color/white"
+            android:paddingLeft="55dp"
+            android:paddingRight="55dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_margin="5dp"
+            android:id="@+id/pg_radiobutton"/>
+    </LinearLayout>
 
      <android.support.design.widget.FloatingActionButton
          android:layout_marginRight="25dp"
@@ -64,7 +63,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentBottom="true"
-         android:src="@android:drawable/ic_menu_info_details"
+         android:src="@drawable/hamburger"
          android:padding="10dp"
          android:id="@+id/landing_fab"
          android:layout_alignParentRight="true"

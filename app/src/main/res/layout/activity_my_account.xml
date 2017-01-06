@@ -3,11 +3,175 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="in.evolve.ornateresidency.Activities.MyAccountActivity">
+    android:orientation="vertical"
+    tools:context="in.evolve.ornateresidency.Activities.MyAccountActivity"
+    android:background="#e5e4e4">
 
     <include android:id="@+id/toolbar"
-        layout="@layout/toolbar_material"/>
+        layout="@layout/toolbar_material"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"/>
 
+   <android.support.v7.widget.CardView
+       android:background="#ffffff"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="120dp"
+       android:layout_marginRight="10dp"
+       android:layout_marginLeft="10dp"
+       android:id="@+id/view">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/full_name_input_layout"
+           android:layout_margin="5dp">
+
+           <EditText
+               android:layout_marginRight="120dp"
+               android:inputType="text"
+               android:textSize="13sp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/input_full_name"
+               android:hint="Full Name"/>
+
+       </android.support.design.widget.TextInputLayout>
+
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/email_address_input_layout"
+           android:layout_margin="5dp">
+
+           <EditText
+               android:inputType="textWebEmailAddress"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="13sp"
+               android:id="@+id/input_email_address"
+               android:hint="Email Address"/>
+
+       </android.support.design.widget.TextInputLayout>
+
+
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/mobile_number_input_layout"
+           android:layout_margin="5dp">
+
+           <EditText
+               android:inputType="phone"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/input_mobile_number"
+               android:hint="Mobile Number"/>
+
+       </android.support.design.widget.TextInputLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/residence_city_input_layout"
+                   android:layout_margin="5dp"
+                   android:layout_weight="0.5">
+
+                   <EditText
+
+                       android:inputType="textImeMultiLine"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textSize="13sp"
+                       android:id="@+id/input_residence_city"
+                       android:hint="City of Residence"/>
+
+               </android.support.design.widget.TextInputLayout>
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/residence_govtId_input_layout"
+                   android:layout_margin="5dp"
+                   android:layout_weight="0.5">
+
+                   <EditText
+                       android:inputType="textImeMultiLine"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textSize="13sp"
+                       android:id="@+id/input_govtId_residence_city"
+                       android:hint="City(in Govt ID)"/>
+
+               </android.support.design.widget.TextInputLayout>
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/birthdate_input_layout"
+                   android:layout_margin="5dp"
+                   android:layout_weight="0.5">
+
+                   <EditText
+
+                       android:inputType="textImeMultiLine"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textSize="13sp"
+                       android:id="@+id/input_birth_date"
+                       android:hint="Birth Date"/>
+
+               </android.support.design.widget.TextInputLayout>
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/maritial_status_input_layout"
+                   android:layout_margin="5dp"
+                   android:layout_weight="0.5">
+
+                   <EditText
+                       android:inputType="textImeMultiLine"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textSize="13sp"
+                       android:id="@+id/input_maritial_status"
+                       android:hint="Maritial Status"/>
+
+               </android.support.design.widget.TextInputLayout>
+           </LinearLayout>
+       </LinearLayout>
+   </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#ffffff"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp">
+        <ImageView
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_my_acc"/>
+
+    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>
+

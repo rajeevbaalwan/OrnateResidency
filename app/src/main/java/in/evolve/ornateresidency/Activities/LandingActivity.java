@@ -68,6 +68,8 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         switch(v.getId())
         {
             case R.id.my_account:
+                Intent myAc=new Intent(this,MyAccountActivity.class);
+                startActivity(myAc);
                 showMenu();
                 break;
             case R.id.fab_list_pg:
