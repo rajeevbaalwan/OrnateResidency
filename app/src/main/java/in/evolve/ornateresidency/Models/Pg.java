@@ -17,8 +17,9 @@ public class Pg implements Serializable{
     private String pgCity;
     private List<String> pgFacilities;
     private Map<String,String> pgRates;
+    private Integer[] pgImageUrls;
 
-    public Pg(String pgName, String pgAddress, String pgLatitude, String pgLongitude, String pgLocality, String pgCity, List<String> pgFacilities, Map<String, String> pgRates) {
+    public Pg(String pgName, String pgAddress, String pgLatitude, String pgLongitude, String pgLocality, String pgCity, List<String> pgFacilities, Map<String, String> pgRates, Integer[] pgImageUrls) {
         this.pgName = pgName;
         this.pgAddress = pgAddress;
         this.pgLatitude = pgLatitude;
@@ -27,6 +28,7 @@ public class Pg implements Serializable{
         this.pgCity = pgCity;
         this.pgFacilities = pgFacilities;
         this.pgRates = pgRates;
+        this.pgImageUrls=pgImageUrls;
     }
 
     public String getPgName() {
@@ -91,5 +93,9 @@ public class Pg implements Serializable{
 
     public void setPgRates(Map<String, String> pgRates) {
         this.pgRates = pgRates;
+    }
+
+    public Integer getPgImageUrls() {
+        return pgImageUrls[0];
     }
 }

@@ -102,7 +102,10 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(listPg);
                 showMenu();
                 break;
-            case R.id.showFaq:
+            case R.id.fab_show_faq:
+                Intent intent=new Intent(LandingActivity.this,PgListActivity.class);
+                startActivity(intent);
+                showMenu();
                 break;
             case R.id.fab_share_app:
                 Intent i = new Intent(Intent.ACTION_SEND);
@@ -124,8 +127,8 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
                 break;
             case R.id.fab_feedback:
-                Intent intent=new Intent(this,FeedBackActivity.class);
-                startActivity(intent);
+                Intent pgList=new Intent(this,FeedBackActivity.class);
+                startActivity(pgList);
                 showMenu();
                 break;
         }

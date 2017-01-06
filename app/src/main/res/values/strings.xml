@@ -20,4 +20,29 @@
     <string name="fill_details">Fill These Details</string>
     <string name="search_title">Search Here</string>
     <string name="search_hint">Search Here</string>
+
+    <array name="pgName">
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+        <item>New Friend PG</item>
+    </array>
+    <array name="Address">
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+        <item>Sector 46, Gurgaon</item>
+    </array>
 </resources>
