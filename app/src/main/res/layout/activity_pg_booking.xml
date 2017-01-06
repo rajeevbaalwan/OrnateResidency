@@ -136,7 +136,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="24*7 Electricity"
+              android:text="24*7"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -152,7 +152,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Free Breakfast"
+              android:text="Meals"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -200,7 +200,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Water Heater"
+              android:text="Geyser"
               android:gravity="center"/>
          </LinearLayout>
 

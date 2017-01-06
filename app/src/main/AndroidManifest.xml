@@ -55,7 +55,8 @@
             android:theme="@style/MaterialTheme.Default"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity android:name=".Activities.PgListActivity" />
-        <activity android:name=".Activities.PgBookingActivity"></activity>
+        <activity android:name=".Activities.PgBookingActivity" />
+        <activity android:name=".Activities.GuestHouseBookingActivity"></activity>
     </application>
 
 </manifest>
