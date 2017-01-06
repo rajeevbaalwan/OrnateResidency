@@ -22,6 +22,7 @@ import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import in.evolve.ornateresidency.R;
@@ -30,6 +31,7 @@ import in.evolve.ornateresidency.Utils.Constants;
 public class LandingActivity extends AppCompatActivity implements View.OnClickListener,Constants{
 
     private FloatingActionButton fab;
+    private RelativeLayout landingLayout;
     private LinearLayout mRevealView;
     private boolean hidden=true;
     private LinearLayout myAccount;
@@ -60,7 +62,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
             }
         });
-
+        landingLayout= (RelativeLayout) findViewById(R.id.landing_layout);
         myAccount= (LinearLayout) findViewById(R.id.my_account);
         pgList= (LinearLayout) findViewById(R.id.fab_list_pg);
         showFaq= (LinearLayout) findViewById(R.id.fab_show_faq);
@@ -144,12 +146,12 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
 
         // to find  radius when icon is tapped for showing layout
         int startradius = 0;
-        int endradius = Math.max(mRevealView.getWidth(), mRevealView.getHeight());
+        int endradius =  mRevealView.getHeight();
 
         // performing circular reveal when icon will be tapped
         Animator animator = ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, startradius, endradius);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
-        animator.setDuration(150);
+        animator.setDuration(300);
 
         //reverse animation
         // to find radius when icon is tapped again for hiding layout

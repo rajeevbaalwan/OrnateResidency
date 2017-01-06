@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@drawable/transparent_background"
+    android:background="@drawable/round_rect_fab_menu"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="200dp"
     android:layout_height="wrap_content">
 
 
     <LinearLayout
         android:id="@+id/my_account"
-        android:layout_margin="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:paddingLeft="70dp"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_my_acc"
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_my_account"
             android:layout_width="0dp"
             android:layout_weight="0.6"
@@ -34,23 +33,22 @@
 
     <LinearLayout
         android:id="@+id/fab_list_pg"
-        android:layout_margin="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:paddingLeft="70dp"
-            android:layout_marginLeft="10dp"
+
             android:src="@drawable/ic_my_acc"
             android:layout_width="0dp"
             android:layout_weight="0.4"
-            android:gravity="right"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_list_pg"
             android:layout_width="0dp"
             android:layout_weight="0.6"
@@ -61,22 +59,22 @@
 
     <LinearLayout
         android:id="@+id/fab_show_faq"
-        android:layout_margin="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:paddingLeft="70dp"
-            android:layout_marginLeft="10dp"
+
             android:src="@drawable/ic_faq"
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_show_faq"
             android:layout_width="0dp"
             android:layout_weight="0.6"
@@ -86,22 +84,21 @@
 
     <LinearLayout
         android:id="@+id/fab_call_us"
-        android:layout_margin="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:paddingLeft="70dp"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_call_us"
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_call_us"
             android:layout_width="0dp"
             android:layout_weight="0.6"
@@ -111,22 +108,21 @@
 
     <LinearLayout
         android:id="@+id/fab_share_app"
-        android:layout_margin="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:paddingLeft="70dp"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_share"
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_share_app"
             android:layout_width="0dp"
             android:layout_gravity="center"
@@ -137,23 +133,21 @@
 
     <LinearLayout
         android:id="@+id/fab_feedback"
-        android:layout_marginBottom="20dp"
-        android:layout_margin="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     <ImageView
-        android:paddingLeft="70dp"
-        android:layout_marginLeft="10dp"
         android:src="@drawable/ic_feedback"
         android:layout_width="0dp"
         android:layout_weight="0.4"
         android:layout_height="match_parent" />
     <TextView
         android:gravity="left"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textColor="@color/switch_thumb_disabled_material_dark"
         android:text="@string/fab_feedback"
         android:layout_width="0dp"
         android:layout_weight="0.6"

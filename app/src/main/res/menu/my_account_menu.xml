@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Log Out"
+        android:id="@+id/my_account_logout"/>
+
+    <item
+        android:id="@+id/save_details"
+        android:title="SAVE"
+        app:showAsAction="always"/>
+
+</menu>
