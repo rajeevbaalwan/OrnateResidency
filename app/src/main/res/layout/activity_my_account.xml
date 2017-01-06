@@ -7,6 +7,7 @@
     tools:context="in.evolve.ornateresidency.Activities.MyAccountActivity"
     android:background="#e5e4e4">
 
+
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar_material"
         android:layout_width="match_parent"
