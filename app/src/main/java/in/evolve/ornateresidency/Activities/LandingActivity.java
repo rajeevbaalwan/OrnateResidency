@@ -1,11 +1,17 @@
 package in.evolve.ornateresidency.Activities;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
@@ -72,26 +78,25 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
 
     public  void onClick(View v)
     {
-        switch(v.getId())
-        {
+        switch(v.getId()) {
 
             case R.id.pg_radiobutton:
 
-                Intent inPg = new Intent(LandingActivity.this,SearchActivity.class);
+                Intent inPg = new Intent(LandingActivity.this, SearchActivity.class);
                 startActivity(inPg);
 
                 break;
             case R.id.guest_house_radiobutton:
-                Intent inGh = new Intent(LandingActivity.this,SearchActivity.class);
+                Intent inGh = new Intent(LandingActivity.this, SearchActivity.class);
                 startActivity(inGh);
                 break;
             case R.id.my_account:
-                Intent myAc=new Intent(this,MyAccountActivity.class);
+                Intent myAc = new Intent(this, MyAccountActivity.class);
                 startActivity(myAc);
                 showMenu();
                 break;
             case R.id.fab_list_pg:
-                Intent listPg = new Intent(LandingActivity.this,ListYourPlaceActivity.class);
+                Intent listPg = new Intent(LandingActivity.this, ListYourPlaceActivity.class);
                 startActivity(listPg);
                 showMenu();
                 break;
@@ -101,13 +106,19 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_TEXT, "I am sharing my app::");
-                startActivity(Intent.createChooser(i,"Share via:"));
+                startActivity(Intent.createChooser(i, "Share via:"));
                 showMenu();
                 break;
             case R.id.fab_call_us:
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(OWNER_PHONE);
-                startActivity(callIntent);
+
+
+                if (ActivityCompat.checkSelfPermission(LandingActivity.this, Manifest.permission.CALL_PHONE) == 1) {
+                    callOnOwnerPhone();
+                }
+
+                else{
+                    ActivityCompat.requestPermissions(LandingActivity.this,new String[]{Manifest.permission.CALL_PHONE},574);
+                }
                 showMenu();
                 break;
             case R.id.fab_feedback:
@@ -116,6 +127,12 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
                 break;
         }
+    }
+
+    private void callOnOwnerPhone(){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(OWNER_PHONE);
+        startActivity(callIntent);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -186,6 +203,20 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         super.onBackPressed();
+
+    }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode ==  574){
+            if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                callOnOwnerPhone();
+            }
+        }
 
     }
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -154,5 +155,14 @@ public class ListYourPlaceActivity extends AppCompatActivity {
         UtilMethods.toastL(ListYourPlaceActivity.this,"Working");
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home){
+            ListYourPlaceActivity.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
