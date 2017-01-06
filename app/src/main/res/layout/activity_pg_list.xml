@@ -6,7 +6,12 @@
     android:background="#eceff7"
     tools:context="in.evolve.ornateresidency.Activities.PgListActivity">
 
+    <include
+        layout="@layout/toolbar_material"
+        android:id="@+id/toolbar"/>
+
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/pg_List_RecyclerView">

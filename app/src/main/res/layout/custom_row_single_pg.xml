@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<android.support.v7.widget.CardView
-    android:elevation="5dp"
+<android.support.v7.widget.CardView android:elevation="5dp"
     android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="2dp"
     android:layout_height="wrap_content"
     android:id="@+id/pgContainer"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    app:cardElevation="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
 
@@ -17,7 +18,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="4dp">
+            android:padding="3dp">
 
             <ImageView
                 android:scaleType="fitXY"
@@ -34,13 +35,13 @@
                 <LinearLayout
                     android:layout_gravity="bottom"
                     android:orientation="vertical"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:padding="4dp"
+                        android:padding="1dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/pg_name"
@@ -49,8 +50,7 @@
                         android:textStyle="bold"
                         android:text="Pg Name"/>
                     <TextView
-                        android:padding="4dp"
-                        android:layout_marginTop="10dp"
+                        android:padding="1dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/pg_address"

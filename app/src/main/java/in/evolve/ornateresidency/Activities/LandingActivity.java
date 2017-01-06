@@ -103,7 +103,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
                 break;
             case R.id.fab_show_faq:
-                Intent intent=new Intent(LandingActivity.this,PgListActivity.class);
+                Intent intent=new Intent(LandingActivity.this,PgBookingActivity.class);
                 startActivity(intent);
                 showMenu();
                 break;
