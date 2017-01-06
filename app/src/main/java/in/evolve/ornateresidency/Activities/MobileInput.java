@@ -145,7 +145,7 @@ public class MobileInput extends AppCompatActivity {
         final EditText emailText = (EditText) view.findViewById(R.id.email_input);
         Spinner spinner = (Spinner) view.findViewById(R.id.genderSelectSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, new String[]{"Male","Female"});
+                android.R.layout.simple_spinner_item, new String[]{"Male","Female"});
 
         spinner.setAdapter(adapter);
 

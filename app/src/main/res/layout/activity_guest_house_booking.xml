@@ -47,7 +47,7 @@
                                 android:padding="4dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/pg_name"
+                                android:id="@+id/guest_house_name"
                                 android:textSize="15sp"
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold"
@@ -56,7 +56,7 @@
                                 android:padding="4dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/pg_address"
+                                android:id="@+id/guest_house_address"
                                 android:textColor="@android:color/darker_gray"
                                 android:textSize="13sp"
                                 android:text="Guest House Address"/>
@@ -195,6 +195,7 @@
                                     android:gravity="left" />
 
                                 <TextView
+                                    android:id="@+id/single_deluxe_price"
                                     android:padding="5dp"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -216,6 +217,7 @@
                                     android:gravity="left" />
 
                                 <TextView
+                                    android:id="@+id/double_deluxe_price"
                                     android:padding="5dp"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -237,6 +239,7 @@
                                     android:gravity="left" />
 
                                 <TextView
+                                    android:id="@+id/single_suit_price"
                                     android:padding="5dp"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -258,6 +261,7 @@
                                     android:gravity="left" />
 
                                 <TextView
+                                    android:id="@+id/double_suit_price"
                                     android:padding="5dp"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"

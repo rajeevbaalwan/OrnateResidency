@@ -261,6 +261,7 @@
             android:gravity="left" />
 
         <TextView
+            android:id="@+id/pg_single_sharing_price"
             android:padding="5dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -282,6 +283,7 @@
             android:gravity="left" />
 
         <TextView
+            android:id="@+id/pg_double_sharing_price"
             android:padding="5dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -303,6 +305,7 @@
             android:gravity="left" />
 
         <TextView
+            android:id="@+id/pg_tripple_sharing_price"
             android:padding="5dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -319,6 +322,7 @@
          android:layout_height="wrap_content"
          app:cardCornerRadius="5dp">
       <TextView
+          android:id="@+id/conditions"
           android:padding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
