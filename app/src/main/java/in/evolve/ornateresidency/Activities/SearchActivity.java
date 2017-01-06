@@ -3,21 +3,20 @@ package in.evolve.ornateresidency.Activities;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import java.util.ArrayList;
+import java.util.List;
 
 import in.evolve.ornateresidency.Adapters.SearchQueryAdapter;
 import in.evolve.ornateresidency.Models.City;
+import in.evolve.ornateresidency.Models.Locality;
 import in.evolve.ornateresidency.R;
 import in.evolve.ornateresidency.Utils.UtilMethods;
 
@@ -32,10 +31,40 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        List<City> cities = new ArrayList<>();
+
+        List<Locality> l = new ArrayList<>();
+        l.add(new Locality("1","Rajeev Chowk"));
+        l.add(new Locality("2","Sandeep Chowk"));
+        l.add(new Locality("3","Rahul Chowk"));
+        l.add(new Locality("4","Namit Chowk"));
+
+        List<Locality> l1 = new ArrayList<>();
+        l.add(new Locality("1","Rajeev Chowk"));
+        l.add(new Locality("2","Sandeep Chowk"));
+        l.add(new Locality("3","Rahul Chowk"));
+        l.add(new Locality("4","Namit Chowk"));
+        List<Locality> l2 = new ArrayList<>();
+        l.add(new Locality("1","Rajeev Chowk"));
+        l.add(new Locality("2","Sandeep Chowk"));
+        l.add(new Locality("3","Rahul Chowk"));
+        l.add(new Locality("4","Namit Chowk"));
+        List<Locality> l3 = new ArrayList<>();
+        l.add(new Locality("1","Rajeev Chowk"));
+        l.add(new Locality("2","Sandeep Chowk"));
+        l.add(new Locality("3","Rahul Chowk"));
+        l.add(new Locality("4","Namit Chowk"));
+
+
+        cities.add(new City("Gurgaon",l,"1","Gurgaon"));
+        cities.add(new City("Delhi",l1,"2","Delhi"));
+        cities.add(new City("Hello",l2,"3","Amritsar"));
+        cities.add(new City("Dont Know",l3,"4","Jalandhar"));
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         setSupportActionBar(toolbar);
-        adapter = new SearchQueryAdapter(new ArrayList<City>());
+        adapter = new SearchQueryAdapter(cities);
         searchRecyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
         searchRecyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
         searchRecyclerView.setAdapter(adapter);
