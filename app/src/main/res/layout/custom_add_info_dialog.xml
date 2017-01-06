@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textStyle="normal"
-            android:text="CHOOSE"/>
+            android:text="@string/gender"/>
 
         <Spinner
             android:id="@+id/genderSelectSpinner"

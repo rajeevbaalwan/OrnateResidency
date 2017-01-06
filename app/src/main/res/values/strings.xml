@@ -20,6 +20,24 @@
     <string name="fill_details">Fill These Details</string>
     <string name="search_title">Search Here</string>
     <string name="search_hint">Search Here</string>
+    <string name="parking">Parking</string>
+    <string name="TV">TV</string>
+    <string name="Wifi">Wifi</string>
+    <string name="elec">24*7 Electricity</string>
+    <string name="meals">Meals</string>
+    <string name="card">Card</string>
+    <string name="water">24*7 Water</string>
+    <string name="heat">Geyser</string>
+    <string name="almirah">Almirah</string>
+    <string name="amount">Amount</string>
+    <string name="single">Single Person</string>
+    <string name="doubles">Double Sharing</string>
+    <string name="triple">Tripple Sharing</string>
+    <string name="couplesAllowed">Couples are allowed.</string>
+    <string name="visit">Visit PG</string>
+    <string name="gender">Gender</string>
+    <string name="genre">Genre</string>
+    <string name="pgregister">Register PG</string>
 
     <array name="pgName">
         <item>New Friend PG</item>

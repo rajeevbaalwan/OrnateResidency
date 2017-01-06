@@ -49,7 +49,7 @@
             android:gravity="left"
             android:textSize="16sp"
             android:textColor="@color/switch_thumb_disabled_material_dark"
-            android:text="@string/fab_list_pg"
+            android:text="@string/pgregister"
             android:layout_width="0dp"
             android:layout_weight="0.6"
             android:layout_height="wrap_content" />

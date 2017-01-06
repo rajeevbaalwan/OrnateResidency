@@ -88,7 +88,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Parking"
+              android:text="@string/parking"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -104,7 +104,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="TV"
+              android:text="@string/TV"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -120,7 +120,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Wifi"
+              android:text="@string/Wifi"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -136,7 +136,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="24*7"
+              android:text="@string/elec"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -152,7 +152,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Meals"
+              android:text="@string/meals"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -168,7 +168,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Card"
+              android:text="@string/card"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -184,7 +184,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="24*7 Water"
+              android:text="@string/water"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -200,7 +200,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Geyser"
+              android:text="@string/heat"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -217,7 +217,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Almirah"
+              android:text="@string/almirah"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -240,7 +240,7 @@
            android:padding="5dp"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="Amount "
+           android:text="@string/amount"
            android:textStyle="bold"
            android:gravity="center"/>
        <View
@@ -257,7 +257,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:text="Single Sharing"
+            android:text="@string/single"
             android:gravity="left" />
 
         <TextView
@@ -278,7 +278,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:text="Double Sharing"
+            android:text="@string/doubles"
             android:gravity="left" />
 
         <TextView
@@ -299,7 +299,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:text="Tripple Sharing"
+            android:text="@string/triple"
             android:gravity="left" />
 
         <TextView
@@ -322,7 +322,7 @@
           android:padding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Couples are allowed"/>
+          android:text="@string/couplesAllowed"/>
 
      </android.support.v7.widget.CardView>
 
@@ -331,7 +331,7 @@
           android:layout_marginBottom="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Visit PG"
+          android:text="@string/visit"
           android:textStyle="bold"
           android:textSize="20sp"
           android:textColor="@android:color/white"
