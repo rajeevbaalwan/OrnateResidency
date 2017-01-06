@@ -35,7 +35,8 @@ public class ListYourPlaceActivity extends AppCompatActivity {
 
         toolbar  = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("List My Property");
+        setTitle("List My Property");
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
 
         nameInput = (EditText) findViewById(R.id.input_name);
         emailInput = (EditText) findViewById(R.id.input_email);

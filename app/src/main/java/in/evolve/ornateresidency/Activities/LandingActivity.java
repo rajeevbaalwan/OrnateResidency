@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,6 +32,8 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     private LinearLayout shareApp;
     private LinearLayout feedBack;
     private LinearLayout callUs;
+    private Button searchGuestHouseButton;
+    private Button searchPgButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,10 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
 
         fab= (FloatingActionButton) findViewById(R.id.landing_fab);
         mRevealView= (LinearLayout) findViewById(R.id.fab_layout);
+        searchGuestHouseButton = (Button) findViewById(R.id.guest_house_radiobutton);
+        searchPgButton = (Button)  findViewById(R.id.pg_radiobutton);
+        searchPgButton.setOnClickListener(this);
+        searchGuestHouseButton.setOnClickListener(this);
         mRevealView.setVisibility(View.INVISIBLE);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +74,17 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     {
         switch(v.getId())
         {
+
+            case R.id.pg_radiobutton:
+
+                Intent inPg = new Intent(LandingActivity.this,SearchActivity.class);
+                startActivity(inPg);
+
+                break;
+            case R.id.guest_house_radiobutton:
+                Intent inGh = new Intent(LandingActivity.this,SearchActivity.class);
+                startActivity(inGh);
+                break;
             case R.id.my_account:
                 Intent myAc=new Intent(this,MyAccountActivity.class);
                 startActivity(myAc);

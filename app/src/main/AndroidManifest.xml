@@ -30,10 +30,24 @@
         </receiver>
 
         <activity android:name=".Activities.LandingActivity" />
-        <activity android:name=".Activities.ListYourPlaceActivity" />
-        <activity android:name=".Activities.FeedBackActivity" />
-        <activity android:name=".Activities.MyAccountActivity" />
-        <activity android:name=".Activities.SearchActivity" />
+        <activity android:name=".Activities.ListYourPlaceActivity"
+            android:theme="@style/MaterialTheme.Default"/>
+        <activity android:name=".Activities.FeedBackActivity"
+            android:theme="@style/MaterialTheme.Default"/>
+        <activity android:name=".Activities.MyAccountActivity"
+            android:theme="@style/MaterialTheme.Default"/>
+        <activity android:name=".Activities.SearchActivity"
+            android:theme="@style/MaterialTheme.Default"
+            android:launchMode="singleTop">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+        </activity>
         <activity android:name=".Activities.MobileInput"
             android:windowSoftInputMode="stateAlwaysVisible"
             android:theme="@style/MaterialTheme.Default"></activity>
