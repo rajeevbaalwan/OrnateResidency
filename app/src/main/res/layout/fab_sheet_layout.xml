@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:src="@drawable/ic_my_acc"
+            android:src="@drawable/account"
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="match_parent" />
@@ -41,7 +41,7 @@
 
         <ImageView
 
-            android:src="@drawable/ic_my_acc"
+            android:src="@drawable/pgregister"
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="match_parent" />
@@ -67,7 +67,7 @@
 
         <ImageView
 
-            android:src="@drawable/ic_faq"
+            android:src="@drawable/faq"
             android:layout_width="0dp"
             android:layout_weight="0.4"
             android:layout_height="match_parent" />
@@ -140,7 +140,7 @@
         android:layout_height="wrap_content">
 
     <ImageView
-        android:src="@drawable/ic_feedback"
+        android:src="@drawable/feedback"
         android:layout_width="0dp"
         android:layout_weight="0.4"
         android:layout_height="match_parent" />
