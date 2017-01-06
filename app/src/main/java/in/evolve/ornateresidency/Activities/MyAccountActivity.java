@@ -16,8 +16,8 @@ public class MyAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Account");
         setSupportActionBar(toolbar);
+        setTitle("Account");
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
     }
 }
