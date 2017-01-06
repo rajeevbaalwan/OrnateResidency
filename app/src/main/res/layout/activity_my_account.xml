@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="in.evolve.ornateresidency.Activities.MyAccountActivity"
     android:background="#e5e4e4">
@@ -11,7 +12,7 @@
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar_material"
         android:layout_width="match_parent"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp" />
 
    <android.support.v7.widget.CardView
        android:background="#ffffff"
@@ -164,7 +165,8 @@
         android:layout_alignRight="@+id/view"
         android:layout_alignEnd="@+id/view"
         android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginEnd="20dp"
+        app:cardElevation="5dp">
         <ImageView
             android:padding="20dp"
             android:layout_width="match_parent"
