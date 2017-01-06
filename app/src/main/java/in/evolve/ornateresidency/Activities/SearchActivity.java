@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import in.evolve.ornateresidency.Adapters.SearchQueryAdapter;
@@ -39,21 +40,22 @@ public class SearchActivity extends AppCompatActivity {
         l.add(new Locality("3","Rahul Chowk"));
         l.add(new Locality("4","Namit Chowk"));
 
+
         List<Locality> l1 = new ArrayList<>();
-        l.add(new Locality("1","Rajeev Chowk"));
-        l.add(new Locality("2","Sandeep Chowk"));
-        l.add(new Locality("3","Rahul Chowk"));
-        l.add(new Locality("4","Namit Chowk"));
+        l1.add(new Locality("1","Rajeev Chowk"));
+        l1.add(new Locality("2","Sandeep Chowk"));
+        l1.add(new Locality("3","Rahul Chowk"));
+        l1.add(new Locality("4","Namit Chowk"));
         List<Locality> l2 = new ArrayList<>();
-        l.add(new Locality("1","Rajeev Chowk"));
-        l.add(new Locality("2","Sandeep Chowk"));
-        l.add(new Locality("3","Rahul Chowk"));
-        l.add(new Locality("4","Namit Chowk"));
+        l2.add(new Locality("1","Rajeev Chowk"));
+        l2.add(new Locality("2","Sandeep Chowk"));
+        l2.add(new Locality("3","Rahul Chowk"));
+        l2.add(new Locality("4","Namit Chowk"));
         List<Locality> l3 = new ArrayList<>();
-        l.add(new Locality("1","Rajeev Chowk"));
-        l.add(new Locality("2","Sandeep Chowk"));
-        l.add(new Locality("3","Rahul Chowk"));
-        l.add(new Locality("4","Namit Chowk"));
+        l3.add(new Locality("1","Rajeev Chowk"));
+        l3.add(new Locality("2","Sandeep Chowk"));
+        l3.add(new Locality("3","Rahul Chowk"));
+        l3.add(new Locality("4","Namit Chowk"));
 
 
         cities.add(new City("Gurgaon",l,"1","Gurgaon"));
@@ -64,7 +66,7 @@ public class SearchActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         setSupportActionBar(toolbar);
-        adapter = new SearchQueryAdapter(cities);
+        adapter = new SearchQueryAdapter(SearchActivity.this,cities);
         searchRecyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
         searchRecyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
         searchRecyclerView.setAdapter(adapter);
@@ -78,7 +80,6 @@ public class SearchActivity extends AppCompatActivity {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView  searchView =(SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setIconified(false);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override

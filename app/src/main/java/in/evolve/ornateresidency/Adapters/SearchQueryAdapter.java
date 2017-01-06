@@ -1,8 +1,14 @@
 package in.evolve.ornateresidency.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.RotateAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter;
@@ -12,9 +18,11 @@ import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder;
 
 import java.util.List;
 
+import in.evolve.ornateresidency.Activities.PgListActivity;
 import in.evolve.ornateresidency.Models.City;
 import in.evolve.ornateresidency.Models.Locality;
 import in.evolve.ornateresidency.R;
+import static android.view.animation.Animation.RELATIVE_TO_SELF;
 
 /**
  * Created by Brekkishhh on 06-01-2017.
@@ -22,8 +30,10 @@ import in.evolve.ornateresidency.R;
 public class SearchQueryAdapter extends ExpandableRecyclerViewAdapter<SearchQueryAdapter.CityViewHolder,SearchQueryAdapter.LocalityViewHolder> {
 
 
-    public SearchQueryAdapter(List<? extends ExpandableGroup> groups) {
+    private Context context ;
+    public SearchQueryAdapter(Context context ,List<? extends ExpandableGroup> groups) {
         super(groups);
+        this.context = context;
     }
 
     @Override
@@ -37,9 +47,17 @@ public class SearchQueryAdapter extends ExpandableRecyclerViewAdapter<SearchQuer
     }
 
     @Override
-    public void onBindChildViewHolder(LocalityViewHolder holder, int flatPosition, ExpandableGroup group, int childIndex) {
+    public void onBindChildViewHolder(LocalityViewHolder holder, int flatPosition, final ExpandableGroup group, int childIndex) {
         Locality l = ((City) group).getItems().get(childIndex);
       holder.setLocalitiesNames(l.getLocalityName());
+
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PgListActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -50,11 +68,13 @@ public class SearchQueryAdapter extends ExpandableRecyclerViewAdapter<SearchQuer
     protected class CityViewHolder extends GroupViewHolder {
 
         private TextView value;
+        private ImageView arrow;
 
         public CityViewHolder(View itemView) {
             super(itemView);
 
             value = (TextView) itemView.findViewById(R.id.list_city_name);
+            arrow = (ImageView) itemView.findViewById(R.id.list_item_genre_arrow);
         }
 
         public void setCityTitle(ExpandableGroup genre) {
@@ -62,16 +82,44 @@ public class SearchQueryAdapter extends ExpandableRecyclerViewAdapter<SearchQuer
                 value.setText(genre.getTitle());
                 //icon.setBackgroundResource(((Genre) genre).getIconResId());
         }
+
+        @Override
+        public void expand() {
+            animateExpand();
+        }
+
+        @Override
+        public void collapse() {
+            animateCollapse();
+        }
+
+        private void animateExpand() {
+            RotateAnimation rotate = new RotateAnimation(360, 180, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
+            rotate.setDuration(300);
+            rotate.setFillAfter(true);
+            arrow.setAnimation(rotate);
+        }
+
+        private void animateCollapse() {
+            RotateAnimation rotate = new RotateAnimation(180, 360, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
+            rotate.setDuration(300);
+            rotate.setFillAfter(true);
+            arrow.setAnimation(rotate);
+        }
     }
 
     protected class LocalityViewHolder extends ChildViewHolder{
 
         private TextView value;
+        private FrameLayout mainLayout;
 
         public LocalityViewHolder(View itemView) {
             super(itemView);
 
             value = (TextView) itemView.findViewById(R.id.list_item_locality_name);
+            mainLayout = (FrameLayout) itemView.findViewById(R.id.mainContainer);
+
+
         }
 
         public void setLocalitiesNames(String name){
