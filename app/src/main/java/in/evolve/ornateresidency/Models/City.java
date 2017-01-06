@@ -53,17 +53,4 @@ public class City extends ExpandableGroup<Locality> {
         return Integer.parseInt( getCityId());
     }
 
-    public static final Creator<Locality> CREATOR = new Creator<Locality>() {
-        @Override
-        public Locality createFromParcel(Parcel in) {
-            return new Locality(in);
-        }
-
-        @Override
-        public Locality[] newArray(int size) {
-            return new Locality[size];
-        }
-    };
-
-
 }
