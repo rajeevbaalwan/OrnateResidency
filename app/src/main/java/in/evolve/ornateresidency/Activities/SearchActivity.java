@@ -12,9 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import in.evolve.ornateresidency.Adapters.SearchQueryAdapter;
 import in.evolve.ornateresidency.Models.City;
 import in.evolve.ornateresidency.Models.Locality;
@@ -84,13 +82,11 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextSubmit(String s) {
-
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-
                 return false;
             }
         });

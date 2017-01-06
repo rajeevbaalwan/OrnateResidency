@@ -93,7 +93,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(inGh);
                 break;
             case R.id.my_account:
-                Intent myAc = new Intent(this, MyAccountActivity.class);
+                Intent myAc = new Intent(LandingActivity.this, MyAccountActivity.class);
                 startActivity(myAc);
                 showMenu();
                 break;
@@ -143,40 +143,33 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void showMenu() {
         fab.setVisibility(View.INVISIBLE);
-        // finding X and Y co-ordinates
+
         int cx = (mRevealView.getRight());
         int cy = (mRevealView.getTop());
 
-        // to find  radius when icon is tapped for showing layout
         int startradius = 0;
         int endradius =  mRevealView.getHeight();
 
-        // performing circular reveal when icon will be tapped
         Animator animator = ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, startradius, endradius);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
         animator.setDuration(300);
 
-        //reverse animation
-        // to find radius when icon is tapped again for hiding layout
-        //  starting radius will be the radius or the extent to which circular reveal animation is to be shown
-
         int reverse_startradius = Math.max(mRevealView.getWidth(), mRevealView.getHeight());
 
-        //endradius will be zero
+
         int reverse_endradius = 0;
 
-        // performing circular reveal for reverse animation
         Animator animate = ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, reverse_startradius, reverse_endradius);
         if (hidden) {
 
-            // to show the layout when icon is tapped
+
             mRevealView.setVisibility(View.VISIBLE);
             animator.start();
             hidden = false;
         } else {
             mRevealView.setVisibility(View.VISIBLE);
 
-            // to hide layout on animation end
+
             animate.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {

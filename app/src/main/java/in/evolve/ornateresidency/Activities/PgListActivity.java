@@ -36,7 +36,7 @@ public class PgListActivity extends AppCompatActivity {
 
         pgListRecyclerView= (RecyclerView) findViewById(R.id.pg_List_RecyclerView);
         pgListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PgListAdapter pgListAdapter=new PgListAdapter(this,getData(pgName,pgAddress));
+        PgListAdapter pgListAdapter = new PgListAdapter(this,getData(pgName,pgAddress));
         pgListRecyclerView.setAdapter(pgListAdapter);
 
     }
