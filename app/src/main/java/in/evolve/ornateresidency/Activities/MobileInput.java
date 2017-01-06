@@ -1,10 +1,9 @@
 package in.evolve.ornateresidency.Activities;
 
-import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -47,6 +46,7 @@ public class MobileInput extends AppCompatActivity {
         setTitle("Enter Phone ...");
         sharedPrefUtil = new SharedPrefUtil(MobileInput.this);
         phoneInput = (EditText) findViewById(R.id.phone_input_layout);
+        phoneInput.requestFocus();
         sendOtpRequest = (FloatingActionButton) findViewById(R.id.sendOtpRequestToServer);
 
         sendOtpRequest.setOnClickListener(new View.OnClickListener() {

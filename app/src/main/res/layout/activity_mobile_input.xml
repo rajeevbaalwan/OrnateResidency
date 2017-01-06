@@ -8,25 +8,46 @@
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar_material"/>
 
-    <EditText
-        android:layout_marginRight="20dp"
-        android:hint="@string/enter_phone_number"
-        android:layout_marginTop="20dp"
+
+    <LinearLayout
         android:layout_below="@+id/toolbar"
-        android:inputType="phone"
-        android:id="@+id/phone_input_layout"
-        android:padding="10dp"
-        android:layout_marginLeft="20dp"
+        android:id="@+id/inputLayout"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="80dp">
+
+        <ImageView
+            android:layout_gravity="bottom"
+            android:src="@drawable/ic_india_flag"
+            android:layout_width="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"/>
+
+
+        <EditText
+
+            android:layout_marginRight="20dp"
+            android:hint="@string/enter_phone_number"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.9"
+            android:inputType="phone"
+            android:id="@+id/phone_input_layout"
+            android:padding="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
 
     <android.support.design.widget.FloatingActionButton
-        android:src="@android:drawable/ic_media_next"
+        android:src="@android:drawable/ic_menu_send"
         android:layout_marginTop="10dp"
         android:id="@+id/sendOtpRequestToServer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/phone_input_layout"/>
+        android:layout_below="@+id/inputLayout"/>
 
 </RelativeLayout>
