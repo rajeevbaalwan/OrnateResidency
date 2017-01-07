@@ -24,11 +24,14 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView searchRecyclerView;
     private SearchQueryAdapter adapter;
     private Toolbar toolbar;
+    public static boolean isPg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        isPg = getIntent().getStringExtra("type").equals("pg");
 
         List<City> cities = new ArrayList<>();
 

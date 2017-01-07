@@ -18,7 +18,9 @@ import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder;
 
 import java.util.List;
 
+import in.evolve.ornateresidency.Activities.GuestHouseListActivity;
 import in.evolve.ornateresidency.Activities.PgListActivity;
+import in.evolve.ornateresidency.Activities.SearchActivity;
 import in.evolve.ornateresidency.Models.City;
 import in.evolve.ornateresidency.Models.Locality;
 import in.evolve.ornateresidency.R;
@@ -54,8 +56,14 @@ public class SearchQueryAdapter extends ExpandableRecyclerViewAdapter<SearchQuer
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PgListActivity.class);
-                context.startActivity(intent);
+
+                if(SearchActivity.isPg) {
+                    Intent intent = new Intent(context, PgListActivity.class);
+                    context.startActivity(intent);
+                }else{
+                    Intent intent = new Intent(context, GuestHouseListActivity.class);
+                    context.startActivity(intent);
+                }
             }
         });
     }
