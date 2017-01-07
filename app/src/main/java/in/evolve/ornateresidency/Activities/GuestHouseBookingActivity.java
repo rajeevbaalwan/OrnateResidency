@@ -19,6 +19,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.UtilMethods;
 
 public class GuestHouseBookingActivity extends AppCompatActivity {
 
@@ -33,6 +34,18 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
     private LinearLayout  checkOutLayout;
     private TextView checkInDate;
     private TextView checkOutDate;
+    private int inDate;
+    private int inMonth;
+    private int inYear;
+    private int outDate;
+    private int outMonth;
+    private int outYear;
+    private int currentDate;
+    private int currentMonth;
+    private int currentYear;
+    private String chkOutDate;
+    private String chkInDate;
+    private boolean validDate=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +74,14 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
         checkInDate = (TextView) findViewById(R.id.check_in_date);
         checkOutDate = (TextView) findViewById(R.id.check_out_date);
 
+        inDate=outDate=currentDate=Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        inMonth=outMonth=currentMonth=Calendar.getInstance().get(Calendar.MONTH)+1;
+        inYear=outYear=currentYear=Calendar.getInstance().get(Calendar.YEAR);
+
+        chkInDate=currentDate+"/"+currentMonth+"/"+currentYear;
+        chkOutDate=currentDate+"/"+currentMonth+"/"+currentYear;
+        checkInDate.setText(chkInDate);
+        checkOutDate.setText(chkOutDate);
         checkInLayout.setOnClickListener(new View.OnClickListener() {
 
             Calendar calendar = Calendar.getInstance();
@@ -70,8 +91,21 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
                 com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog = com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(new com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-                        String chkInDate = dayOfMonth+"/"+monthOfYear+"/"+year;
-                        checkInDate.setText(chkInDate);
+
+                        inDate=dayOfMonth;
+                        inMonth=monthOfYear+1;
+                        inYear=year;
+
+                         if((validDate==false) && (inDate<=outDate && inMonth<=outMonth &&inYear<=outYear))
+                        {
+                            chkInDate = inDate + "/" +(inMonth)+ "/" + inYear;
+                            checkInDate.setText(chkInDate);
+                            validDate = true;
+                        }
+                        else  if(currentDate>dayOfMonth||currentMonth>monthOfYear||currentYear>year)
+                         {
+                             UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter a Valid date");
+                         }
                     }
                 },calendar.get(java.util.Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.show(getFragmentManager(),"CheckInDate");
@@ -88,8 +122,27 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
                 com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog = com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(new com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-                        String chkOutDate = dayOfMonth+"/"+monthOfYear+"/"+year;
-                        checkOutDate.setText(chkOutDate);
+
+
+
+                        if(validDate==false && dayOfMonth!=currentDate &&monthOfYear!=currentMonth&& year!=currentYear)
+                        {
+                            UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter CheckIn Date First");
+                        }
+                        else if(dayOfMonth<inDate || (monthOfYear+1)<inMonth ||year<inYear)
+                        {
+                            UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter a Valid Date");
+
+                        }
+                        else
+                        {
+                            outDate=dayOfMonth;
+                            outMonth=monthOfYear+1;
+                            outYear=year;
+                            chkOutDate = dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+                            checkOutDate.setText(chkOutDate);
+                            validDate=false;
+                        }
                     }
                 },calendar.get(java.util.Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
 
