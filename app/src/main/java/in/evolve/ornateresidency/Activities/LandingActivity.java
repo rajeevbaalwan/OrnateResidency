@@ -38,7 +38,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     private LinearLayout pgList;
     private LinearLayout showFaq;
     private LinearLayout shareApp;
-    private LinearLayout feedBack;
+    private LinearLayout feedBack,myBookings;
     private LinearLayout callUs;
     private Button searchGuestHouseButton;
     private Button searchPgButton;
@@ -49,10 +49,12 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_landing);
 
         fab= (FloatingActionButton) findViewById(R.id.landing_fab);
+        myBookings =(LinearLayout) findViewById(R.id.my_bookings);
         mRevealView= (LinearLayout) findViewById(R.id.fab_layout);
         searchGuestHouseButton = (Button) findViewById(R.id.guest_house_radiobutton);
         searchPgButton = (Button)  findViewById(R.id.pg_radiobutton);
         searchPgButton.setOnClickListener(this);
+        myBookings.setOnClickListener(this);
         searchGuestHouseButton.setOnClickListener(this);
         mRevealView.setVisibility(View.INVISIBLE);
 
@@ -82,6 +84,11 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     {
         switch(v.getId()) {
 
+            case R.id.my_bookings:
+
+                Intent inte = new Intent(LandingActivity.this,MyBookingsActivity.class);
+                startActivity(inte);
+                break;
             case R.id.pg_radiobutton:
 
                 Intent inPg = new Intent(LandingActivity.this, SearchActivity.class);

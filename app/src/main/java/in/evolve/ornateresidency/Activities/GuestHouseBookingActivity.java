@@ -3,11 +3,16 @@ package in.evolve.ornateresidency.Activities;
 
 import android.app.DatePickerDialog;
 import java.util.Calendar;
+import java.util.Locale;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +22,7 @@ import in.evolve.ornateresidency.R;
 
 public class GuestHouseBookingActivity extends AppCompatActivity {
 
+    private ImageButton openMap;
     private TextView ghName;
     private TextView ghAddress;
     private TextView singleDeluxePrice;
@@ -34,6 +40,17 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guest_house_booking);
 
         ghName= (TextView) findViewById(R.id.guest_house_name);
+        openMap = (ImageButton) findViewById(R.id.launch_map);
+        openMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String uri = String.format(Locale.ENGLISH, "geo:%f,%f",23.41,56.789);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(intent);
+
+            }
+        });
         ghAddress= (TextView) findViewById(R.id.guest_house_address);
         singleDeluxePrice= (TextView) findViewById(R.id.single_deluxe_price);
         doubleDeluxePrice= (TextView) findViewById(R.id.double_deluxe_price);

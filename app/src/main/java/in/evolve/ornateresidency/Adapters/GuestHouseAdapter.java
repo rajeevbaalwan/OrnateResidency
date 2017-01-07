@@ -13,19 +13,21 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import in.evolve.ornateresidency.Activities.GuestHouseBookingActivity;
 import in.evolve.ornateresidency.Activities.PgBookingActivity;
+import in.evolve.ornateresidency.Models.GuestHouse;
 import in.evolve.ornateresidency.Models.Pg;
 import in.evolve.ornateresidency.R;
 
 /**
  * Created by RAJEEV YADAV on 1/6/2017.
  */
-public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHolder> {
+public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.PgViewHolder> {
 
 
     private Context context;
-    List<Pg> list;
-    public PgListAdapter(Context context, List<Pg> list)
+    List<GuestHouse> list;
+    public GuestHouseAdapter(Context context, List<GuestHouse> list)
     {
         this.context=context;
         this.list=list;
@@ -33,21 +35,21 @@ public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHold
 
     @Override
     public PgViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new PgViewHolder(LayoutInflater.from(context).inflate(R.layout.custom_row_single_pg,parent,false),viewType);
+        return new PgViewHolder(LayoutInflater.from(context).inflate(R.layout.custom_row_single_pg,parent,false));
     }
 
     @Override
     public void onBindViewHolder(PgViewHolder holder, int position) {
 
-        holder.pgName.setText(list.get(position).getPgName());
-        holder.pgAddress.setText(list.get(position).getPgAddress());
-        holder.pgImage.setImageResource(list.get(position).getPgImageUrls());
+        holder.ghName.setText(list.get(position).getGhName());
+        holder.ghAddress.setText(list.get(position).getGhaddress());
+        holder.ghImage.setImageResource(list.get(position).getGhImageUrls());
 
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, PgBookingActivity.class);
+                Intent intent = new Intent(context, GuestHouseBookingActivity.class);
                 context.startActivity(intent);
             }
         });
@@ -60,16 +62,16 @@ public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHold
 
     public class PgViewHolder extends  RecyclerView.ViewHolder {
 
-        TextView pgName;
-        TextView pgAddress;
-        ImageView pgImage;
+        TextView ghName;
+        TextView ghAddress;
+        ImageView ghImage;
         CardView  container;
 
-        public PgViewHolder(View itemView, int viewType) {
+        public PgViewHolder(View itemView) {
             super(itemView);
-          pgName= (TextView) itemView.findViewById(R.id.pg_name);
-          pgAddress= (TextView) itemView.findViewById(R.id.pg_address);
-          pgImage= (ImageView) itemView.findViewById(R.id.pg_image);
+            ghName= (TextView) itemView.findViewById(R.id.pg_name);
+            ghAddress= (TextView) itemView.findViewById(R.id.pg_address);
+            ghImage= (ImageView) itemView.findViewById(R.id.pg_image);
             container = (CardView) itemView.findViewById(R.id.pgContainer);
         }
     }

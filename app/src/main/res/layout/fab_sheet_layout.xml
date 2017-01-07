@@ -31,6 +31,31 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/my_bookings"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/account"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:gravity="left"
+            android:textSize="16sp"
+            android:textColor="@color/switch_thumb_disabled_material_dark"
+            android:text="@string/bookings"
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/fab_list_pg"
         android:paddingTop="10dp"

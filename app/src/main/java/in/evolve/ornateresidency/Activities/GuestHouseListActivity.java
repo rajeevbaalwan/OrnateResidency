@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.evolve.ornateresidency.Adapters.GuestHouseAdapter;
 import in.evolve.ornateresidency.Adapters.PgListAdapter;
+import in.evolve.ornateresidency.Models.GuestHouse;
 import in.evolve.ornateresidency.Models.Pg;
 import in.evolve.ornateresidency.R;
 
@@ -19,7 +21,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private RecyclerView pgListRecyclerView;
-    private Integer arr[]={R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1};
+    private int arr[]={R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +38,17 @@ public class GuestHouseListActivity extends AppCompatActivity {
 
         pgListRecyclerView= (RecyclerView) findViewById(R.id.guestHouse_List_RecyclerView);
         pgListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PgListAdapter pgListAdapter = new PgListAdapter(this,getData(pgName,pgAddress));
-        pgListRecyclerView.setAdapter(pgListAdapter);
+        GuestHouseAdapter  adapter  = new GuestHouseAdapter(this,getData(pgName,pgAddress));
+        pgListRecyclerView.setAdapter(adapter);
 
     }
 
-    private List<Pg> getData(String[] pgName, String[] pgAddress) {
-        List<Pg> list=new ArrayList<>();
+    private List<GuestHouse> getData(String[] pgName, String[] pgAddress) {
+        List<GuestHouse> list=new ArrayList<>();
 
         for(int i=0;i<10;i++)
         {
-            list.add(new Pg(pgName[i],pgAddress[i],"ab","ab","ab","ab",null,null,arr));
+            list.add(new GuestHouse(pgName[i],pgAddress[i],"ab","ab",null,null,arr));
         }
         return list;
     }
