@@ -56,7 +56,8 @@
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity android:name=".Activities.PgListActivity" />
         <activity android:name=".Activities.PgBookingActivity" />
-        <activity android:name=".Activities.GuestHouseBookingActivity"></activity>
+        <activity android:name=".Activities.GuestHouseBookingActivity" />
+        <activity android:name=".Activities.GuestHouseListActivity"></activity>
     </application>
 
 </manifest>
