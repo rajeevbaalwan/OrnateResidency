@@ -15,11 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/MaterialTheme.Base">
         <activity android:name=".Activities.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver android:name=".Reciever.SmsReceiver">
@@ -57,7 +53,14 @@
         <activity android:name=".Activities.PgListActivity" />
         <activity android:name=".Activities.PgBookingActivity" />
         <activity android:name=".Activities.GuestHouseBookingActivity" />
-        <activity android:name=".Activities.GuestHouseListActivity"></activity>
+        <activity android:name=".Activities.GuestHouseListActivity" />
+        <activity android:name=".Activities.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
