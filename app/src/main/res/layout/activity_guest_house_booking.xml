@@ -35,6 +35,7 @@
                         app:cardCornerRadius="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <LinearLayout
                             android:layout_gravity="bottom"
                             android:orientation="vertical"
@@ -43,23 +44,45 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <TextView
-                                android:padding="4dp"
+                            <LinearLayout
+                                android:padding="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/guest_house_name"
-                                android:textSize="15sp"
-                                android:textColor="@android:color/black"
-                                android:textStyle="bold"
-                                android:text="Guest House Name"/>
-                            <TextView
-                                android:padding="4dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/guest_house_address"
-                                android:textColor="@android:color/darker_gray"
-                                android:textSize="13sp"
-                                android:text="Guest House Address"/>
+                                android:orientation="horizontal">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_weight="0.8">
+
+                                    <TextView
+                                        android:padding="4dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/guest_house_name"
+                                        android:textSize="15sp"
+                                        android:textColor="@android:color/black"
+                                        android:textStyle="bold"
+                                        android:text="Guest House Name"/>
+                                    <TextView
+                                        android:padding="4dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/guest_house_address"
+                                        android:textColor="@android:color/darker_gray"
+                                        android:textSize="13sp"
+                                        android:text="Guest House Address"/>
+                                </LinearLayout>
+                                <ImageButton
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.2"
+                                    android:id="@+id/launch_map"
+                                    android:background="@color/colorPrimary"
+                                    android:src="@android:drawable/ic_dialog_map"/>
+
+                            </LinearLayout>
+
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="0.5dp"
@@ -161,7 +184,81 @@
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         app:cardCornerRadius="5dp"
+                        android:layout_marginTop="10dp"
+                        android:elevation="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <LinearLayout
+                                    android:id="@+id/check_in_layout"
+                                    android:gravity="center"
+                                    android:padding="10dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.5"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:padding="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Check In"
+                                        android:gravity="center"/>
+                                    <TextView
+                                        android:padding="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/check_in_date"
+                                        android:text="12-12-12"
+                                        android:gravity="center"/>
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="0.5dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/divider_vertical"/>
+                                <LinearLayout
+                                    android:id="@+id/check_out_layout"
+                                    android:gravity="center"
+                                    android:padding="10dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.5"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:padding="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Check Out"
+                                        android:gravity="center"/>
+                                    <TextView
+                                        android:padding="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/check_out_date"
+                                        android:text="12-12-12"
+                                        android:gravity="center"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        app:cardCornerRadius="5dp"
+                        android:elevation="5dp"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">

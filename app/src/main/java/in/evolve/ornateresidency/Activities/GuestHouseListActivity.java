@@ -24,7 +24,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pg_list);
+        setContentView(R.layout.activity_guest_house_list);
 
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

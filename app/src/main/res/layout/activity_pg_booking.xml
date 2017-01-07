@@ -35,6 +35,7 @@
          app:cardCornerRadius="5dp"
          android:layout_width="match_parent"
          android:layout_height="wrap_content">
+
       <LinearLayout
           android:layout_gravity="bottom"
           android:orientation="vertical"
@@ -43,23 +44,45 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
-       <TextView
-           android:padding="4dp"
+       <LinearLayout
+           android:padding="5dp"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:id="@+id/pg_name"
-           android:textSize="15sp"
-           android:textColor="@android:color/black"
-           android:textStyle="bold"
-           android:text="Pg Name"/>
-       <TextView
-           android:padding="4dp"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:id="@+id/pg_address"
-           android:textColor="@android:color/darker_gray"
-           android:textSize="13sp"
-           android:text="Pg Address"/>
+           android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.8">
+
+         <TextView
+             android:padding="4dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/pg_name"
+             android:textSize="15sp"
+             android:textColor="@android:color/black"
+             android:textStyle="bold"
+             android:text="PG Name"/>
+         <TextView
+             android:padding="4dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/pg_address"
+             android:textColor="@android:color/darker_gray"
+             android:textSize="13sp"
+             android:text="Guest House Address"/>
+        </LinearLayout>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:id="@+id/launch_map"
+            android:background="@color/colorPrimary"
+            android:src="@android:drawable/ic_dialog_map"/>
+
+       </LinearLayout>
+
        <View
            android:layout_width="match_parent"
            android:layout_height="0.5dp"
@@ -88,7 +111,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="@string/parking"
+              android:text="Parking"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -104,7 +127,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="@string/TV"
+              android:text="TV"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -120,7 +143,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="@string/Wifi"
+              android:text="Wifi"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -132,27 +155,11 @@
               android:padding="10dp"
               android:layout_width="70dp"
               android:layout_height="50dp"
-              android:src="@drawable/electricity"/>
+              android:src="@drawable/ic_power_settings_new_black_48dp"/>
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="@string/elec"
-              android:gravity="center"/>
-         </LinearLayout>
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:orientation="vertical">
-          <ImageView
-              android:padding="10dp"
-              android:layout_width="70dp"
-              android:layout_height="50dp"
-              android:src="@drawable/breakfast"/>
-          <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/meals"
+              android:text="Power"
               android:gravity="center"/>
          </LinearLayout>
 
@@ -168,64 +175,13 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="@string/card"
+              android:text="Card"
               android:gravity="center"/>
          </LinearLayout>
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:orientation="vertical">
-          <ImageView
-              android:padding="10dp"
-              android:layout_width="70dp"
-              android:layout_height="50dp"
-              android:src="@drawable/waters"/>
-          <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/water"
-              android:gravity="center"/>
-         </LinearLayout>
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:orientation="vertical">
-          <ImageView
-              android:padding="10dp"
-              android:layout_width="70dp"
-              android:layout_height="50dp"
-              android:src="@drawable/waterheater"/>
-          <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/heat"
-              android:gravity="center"/>
-         </LinearLayout>
-
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:orientation="vertical">
-          <ImageView
-              android:padding="10dp"
-              android:layout_width="70dp"
-              android:layout_height="50dp"
-              android:src="@drawable/almirahstorage"/>
-          <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/almirah"
-              android:gravity="center"/>
-         </LinearLayout>
-
         </LinearLayout>
        </HorizontalScrollView>
       </LinearLayout>
      </android.support.v7.widget.CardView>
-
      <android.support.v7.widget.CardView
          app:cardCornerRadius="5dp"
          android:layout_marginTop="10dp"
