@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#eceff7"
+    android:background="@drawable/animation_list"
+    android:id="@+id/activity_guest_house_booking_landing_layout"
     tools:context="in.evolve.ornateresidency.Activities.PgBookingActivity">
 
     <ScrollView

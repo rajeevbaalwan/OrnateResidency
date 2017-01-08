@@ -27,6 +27,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_house_list);
+        overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
 
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -65,5 +66,11 @@ public class GuestHouseListActivity extends AppCompatActivity {
             GuestHouseListActivity.this.finish();
         }
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
     }
 }

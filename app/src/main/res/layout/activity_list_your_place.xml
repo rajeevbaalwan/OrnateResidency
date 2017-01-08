@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_list_yout_place_landing_layout"
+    android:background="@drawable/animation_list"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="in.evolve.ornateresidency.Activities.ListYourPlaceActivity">
 

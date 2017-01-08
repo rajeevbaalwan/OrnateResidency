@@ -25,6 +25,7 @@ public class PgListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pg_list);
+        overridePendingTransition(R.anim.activity_close_scale,R.anim.activity_open_translate);
 
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,5 +64,11 @@ public class PgListActivity extends AppCompatActivity {
             PgListActivity.this.finish();
         }
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
     }
 }

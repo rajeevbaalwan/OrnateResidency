@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#ECEFF7"
+    android:background="@drawable/animation_list"
     android:layout_height="match_parent"
-
+    android:id="@+id/search_activity_landing_layout"
     tools:context="in.evolve.ornateresidency.Activities.SearchActivity">
 
     <include android:id="@+id/toolbar"

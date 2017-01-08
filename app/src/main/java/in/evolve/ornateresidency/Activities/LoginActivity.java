@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
 
         sharedPrefUtil = new SharedPrefUtil(LoginActivity.this);
         loginButton = (Button) findViewById(R.id.loginButton);
@@ -40,5 +41,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
+    }
 }

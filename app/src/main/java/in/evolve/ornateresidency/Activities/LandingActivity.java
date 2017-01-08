@@ -31,7 +31,6 @@ import in.evolve.ornateresidency.Utils.Constants;
 public class LandingActivity extends AppCompatActivity implements View.OnClickListener,Constants{
 
     private FloatingActionButton fab;
-    private RelativeLayout landingLayout;
     private LinearLayout mRevealView;
     private boolean hidden=true;
     private LinearLayout myAccount;
@@ -47,6 +46,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
+        overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
 
         fab= (FloatingActionButton) findViewById(R.id.landing_fab);
         myBookings =(LinearLayout) findViewById(R.id.my_bookings);
@@ -64,7 +64,6 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
             }
         });
-        landingLayout= (RelativeLayout) findViewById(R.id.landing_layout);
         myAccount= (LinearLayout) findViewById(R.id.my_account);
         pgList= (LinearLayout) findViewById(R.id.fab_list_pg);
         showFaq= (LinearLayout) findViewById(R.id.fab_show_faq);
@@ -225,5 +224,11 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
             }
         }
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
     }
 }

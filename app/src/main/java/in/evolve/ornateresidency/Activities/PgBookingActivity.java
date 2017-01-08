@@ -1,11 +1,14 @@
 package in.evolve.ornateresidency.Activities;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -21,11 +24,21 @@ public class PgBookingActivity extends AppCompatActivity {
     private TextView trippleSharingPrice;
     private TextView conditions;
     private ImageButton  openMap;
+    private LinearLayout container;
+    private AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pg_booking);
+        overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
+        container = (LinearLayout) findViewById(R.id.activity_pg_booking_landing_layout);
+
+        animationDrawable= (AnimationDrawable) container.getBackground();
+        animationDrawable.setEnterFadeDuration(6000);
+        animationDrawable.setExitFadeDuration(3000);
+        animationDrawable.start();
+
 
         pgName= (TextView) findViewById(R.id.pg_name);
         pgAddress= (TextView) findViewById(R.id.pg_address);
@@ -45,5 +58,20 @@ public class PgBookingActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(animationDrawable!=null && !animationDrawable.isRunning())
+            animationDrawable.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
+        if(animationDrawable!=null && !animationDrawable.isRunning())
+            animationDrawable.stop();
     }
 }

@@ -2,10 +2,15 @@ package in.evolve.ornateresidency.Activities;
 
 
 import android.app.DatePickerDialog;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -40,17 +46,30 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
     private int outDate;
     private int outMonth;
     private int outYear;
-    private int currentDate;
+    private int currentDay;
     private int currentMonth;
     private int currentYear;
     private String chkOutDate;
     private String chkInDate;
-    private boolean validDate=false;
+    private boolean checkOutState=false;
+    private Calendar c3;
+    private Calendar c2;
+    private Calendar c1;
+    private LinearLayout container;
+    private AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_house_booking);
+        overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
+        container = (LinearLayout) findViewById(R.id.activity_guest_house_booking_landing_layout);
+
+        animationDrawable= (AnimationDrawable) container.getBackground();
+        animationDrawable.setEnterFadeDuration(6000);
+        animationDrawable.setExitFadeDuration(3000);
+        animationDrawable.start();
+
 
         ghName= (TextView) findViewById(R.id.guest_house_name);
         openMap = (ImageButton) findViewById(R.id.launch_map);
@@ -74,14 +93,20 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
         checkInDate = (TextView) findViewById(R.id.check_in_date);
         checkOutDate = (TextView) findViewById(R.id.check_out_date);
 
-        inDate=outDate=currentDate=Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        inDate=outDate=currentDay=Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         inMonth=outMonth=currentMonth=Calendar.getInstance().get(Calendar.MONTH)+1;
         inYear=outYear=currentYear=Calendar.getInstance().get(Calendar.YEAR);
 
-        chkInDate=currentDate+"/"+currentMonth+"/"+currentYear;
-        chkOutDate=currentDate+"/"+currentMonth+"/"+currentYear;
+        chkInDate=currentDay+"-"+currentMonth+"-"+currentYear;
+        chkOutDate=currentDay+"-"+currentMonth+"-"+currentYear;
         checkInDate.setText(chkInDate);
         checkOutDate.setText(chkOutDate);
+
+         SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+         c1=Calendar.getInstance();
+         c1.set(currentYear,currentMonth,currentDay);
+        c2=Calendar.getInstance();
+        c3=Calendar.getInstance();
         checkInLayout.setOnClickListener(new View.OnClickListener() {
 
             Calendar calendar = Calendar.getInstance();
@@ -96,16 +121,19 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
                         inMonth=monthOfYear+1;
                         inYear=year;
 
-                         if((validDate==false) && (inDate<=outDate && inMonth<=outMonth &&inYear<=outYear))
+                        c2.set(inYear,inMonth,inDate);
+                        chkInDate = inDate + "-" +inMonth+"-" + inYear;
+
+                        if(c2.before(c1))
                         {
-                            chkInDate = inDate + "/" +(inMonth)+ "/" + inYear;
-                            checkInDate.setText(chkInDate);
-                            validDate = true;
+                            UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter a Valid Date");
                         }
-                        else  if(currentDate>dayOfMonth||currentMonth>monthOfYear||currentYear>year)
-                         {
-                             UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter a Valid date");
-                         }
+                        else if(c2.after(c3)&&checkOutState==true)
+                        {
+                            UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter a Valid Date");
+                        }
+                        else
+                        checkInDate.setText(chkInDate);
                     }
                 },calendar.get(java.util.Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.show(getFragmentManager(),"CheckInDate");
@@ -122,26 +150,18 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
                 com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog = com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(new com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-
-
-
-                        if(validDate==false && dayOfMonth!=currentDate &&monthOfYear!=currentMonth&& year!=currentYear)
-                        {
-                            UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter CheckIn Date First");
-                        }
-                        else if(dayOfMonth<inDate || (monthOfYear+1)<inMonth ||year<inYear)
-                        {
-                            UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter a Valid Date");
-
-                        }
-                        else
-                        {
                             outDate=dayOfMonth;
                             outMonth=monthOfYear+1;
                             outYear=year;
-                            chkOutDate = dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+                            chkOutDate = dayOfMonth+"-"+(monthOfYear+1)+"-"+year;
+                         c3.set(outYear,outMonth,outDate);
+                        if(c3.before(c1)||c3.before(c2))
+                        {
+                            UtilMethods.toastS(GuestHouseBookingActivity.this,"Please Enter a Valid Date");
+                        }
+                        else {
                             checkOutDate.setText(chkOutDate);
-                            validDate=false;
+                            checkOutState=true;
                         }
                     }
                 },calendar.get(java.util.Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
@@ -151,6 +171,21 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(animationDrawable!=null && !animationDrawable.isRunning())
+            animationDrawable.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
+        if(animationDrawable!=null && !animationDrawable.isRunning())
+            animationDrawable.stop();
     }
 
 }

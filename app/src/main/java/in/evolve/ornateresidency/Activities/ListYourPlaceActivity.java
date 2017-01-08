@@ -1,15 +1,20 @@
 package in.evolve.ornateresidency.Activities;
 
+import android.graphics.Rect;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
+import android.support.transition.Transition;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.transition.Explode;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import in.evolve.ornateresidency.R;
 import in.evolve.ornateresidency.Utils.UtilMethods;
@@ -28,11 +33,21 @@ public class ListYourPlaceActivity extends AppCompatActivity {
     private TextInputLayout numberofRoomsInputLayout;
     private TextInputLayout phoneInputLayout;
     private FloatingActionButton submitRequest;
+    private RelativeLayout container;
+    private AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_your_place);
+        overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
+        container = (RelativeLayout) findViewById(R.id.activity_list_yout_place_landing_layout);
+
+        animationDrawable= (AnimationDrawable) container.getBackground();
+        animationDrawable.setEnterFadeDuration(6000);
+        animationDrawable.setExitFadeDuration(3000);
+        animationDrawable.start();
+
 
         toolbar  = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,7 +69,6 @@ public class ListYourPlaceActivity extends AppCompatActivity {
         submitRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 submitDetails();
             }
         });
@@ -63,7 +77,6 @@ public class ListYourPlaceActivity extends AppCompatActivity {
     }
 
     private void submitDetails(){
-
         if (!validateName()){return;}
         if (!validatePhone()){return;}
         if (!validateAddress()){return;}
@@ -71,8 +84,6 @@ public class ListYourPlaceActivity extends AppCompatActivity {
         if (!validateNumberOfRooms()){return;}
 
         sendDetailsToServer();
-
-
     }
 
     private boolean validateNumberOfRooms() {
@@ -164,5 +175,20 @@ public class ListYourPlaceActivity extends AppCompatActivity {
             ListYourPlaceActivity.this.finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(animationDrawable!=null && !animationDrawable.isRunning())
+            animationDrawable.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
+        if(animationDrawable!=null && !animationDrawable.isRunning())
+            animationDrawable.stop();
     }
 }

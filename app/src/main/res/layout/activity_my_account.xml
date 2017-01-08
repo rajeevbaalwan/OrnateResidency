@@ -5,8 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/myaccount_landing_layout"
     tools:context="in.evolve.ornateresidency.Activities.MyAccountActivity"
-    android:background="#e5e4e4">
+    android:background="@drawable/animation_list">
 
 
     <include android:id="@+id/toolbar"
