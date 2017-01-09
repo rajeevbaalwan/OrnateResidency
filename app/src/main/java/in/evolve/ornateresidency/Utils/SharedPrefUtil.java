@@ -45,7 +45,7 @@ public class SharedPrefUtil {
 
     }
 
-    public User getLoggedInUser(User user){
+    public User getLoggedInUser(){
         return new User(sharedPreferences.getString(KEY_USER_NAME,null),
                 sharedPreferences.getString(KEY_USER_EMAIL,null),sharedPreferences.getString(KEY_USER_GENDER,null),
                 sharedPreferences.getString(KEY_USER_PHONE,null),sharedPreferences.getString(KEY_USER_DOB,null));

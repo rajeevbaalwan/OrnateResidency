@@ -19,13 +19,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.gson.JsonObject;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.Constants;
 import in.evolve.ornateresidency.Utils.SharedPrefUtil;
 import in.evolve.ornateresidency.Utils.UtilMethods;
 
-public class MobileInput extends AppCompatActivity {
+public class MobileInput extends AppCompatActivity implements Constants{
 
     private EditText phoneInput;
     private FloatingActionButton sendOtpRequest;
@@ -35,6 +46,7 @@ public class MobileInput extends AppCompatActivity {
     private MaterialDialog addInfoDialog;
     private String phoneNumber;
     private Toolbar toolbar;
+    private MaterialDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +68,9 @@ public class MobileInput extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(phoneInput.getText().toString().length()==10){
-                    sendOtpRequestToServer();
+                    phoneNumber = phoneInput.getText().toString();
+                    showProgressDialog("Checking Phone Number");
+                    sendOtpRequestToServer(phoneInput.getText().toString());
                 }else{
                     UtilMethods.toastL(MobileInput.this,"Enter A Valid Phone Number");
                 }
@@ -75,16 +89,87 @@ public class MobileInput extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void sendOtpRequestToServer(){
+    private void sendOtpRequestToServer(final String phone){
 
-        String phone = phoneInput.getText().toString();
+        /*String phone = phoneInput.getText().toString();
         phoneNumber = phone;
         otpDialog = new MaterialDialog.Builder(MobileInput.this)
                 .cancelable(false)
                 .customView(getOtpDialogView(),false)
                 .build();
 
-        otpDialog.show();
+        otpDialog.show();*/
+
+        String url = BASE_URL+"phonelogincheck.php?phone="+phone;
+        url.replaceAll(" ","%20");
+
+        OkHttpClient client = new OkHttpClient();
+
+        Request request  = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideProgressDialog();
+                        UtilMethods.toastL(MobileInput.this,"Unable to connect to server ..Try again");
+                    }
+                });
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideProgressDialog();
+                    }
+                });
+
+                String res = response.body().string();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(res);
+                    if(jsonObject.getBoolean("status")){
+                        String userName = jsonObject.getString("name");
+                        String userEmail = jsonObject.getString("email");
+                        String userGender = jsonObject.getString("gender");
+
+                        sharedPrefUtil.startLoginSession(new User(userName,userEmail,userGender,phone,""));
+                        Intent intent = new Intent(MobileInput.this,LandingActivity.class);
+                        startActivity(intent);
+                        MobileInput.this.finish();
+                    }
+
+
+                    else{
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showProgressDialog("Adding Your Info To Server");
+                                checkUserRegisterdOnServer();
+                            }
+                        });
+
+                    }
+
+
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
     }
 
@@ -171,7 +256,69 @@ public class MobileInput extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-              startApp(new User(nameText.getText().toString(),emailText.getText().toString(), gender[0],phoneNumber,null));
+                addInfoDialog.cancel();
+
+                String url = BASE_URL+"addnewphone.php?name="+nameText.getText().toString()+"&email="
+                        +emailText.getText().toString()+"&gender="+gender[0]+"&phone="+phoneNumber+"&dob=0";
+                OkHttpClient okHttpClient = new OkHttpClient();
+
+                Request request = new Request.Builder()
+                        .get()
+                        .url(url)
+                        .build();
+
+                okHttpClient.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Request request, IOException e) {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideProgressDialog();
+                                UtilMethods.toastL(MobileInput.this,"Unable to connect to server ..Try again");
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onResponse(Response response) throws IOException {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideProgressDialog();
+                            }
+                        });
+                        String res = response.body().string();
+
+                        try{
+                            JSONObject jsonObject = new JSONObject(res);
+
+                            if(jsonObject.getBoolean("status")){
+
+                                sharedPrefUtil.startLoginSession(new User(nameText.getText().toString(),emailText.getText().toString(), gender[0],phoneNumber,""));
+                                Intent intent = new Intent(MobileInput.this,LandingActivity.class);
+                                startActivity(intent);
+                                MobileInput.this.finish();
+                            }
+                            else{
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        UtilMethods.toastL(MobileInput.this,"Unable to connect to server ..Try again");
+                                    }
+                                });
+                            }
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                });
+
+
             }
         });
 
@@ -187,5 +334,22 @@ public class MobileInput extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
+    }
+
+    private void showProgressDialog(String msg){
+
+        progressDialog  = new MaterialDialog.Builder(MobileInput.this)
+                .progress(true,100)
+                .content(msg)
+                .cancelable(false)
+                .build();
+        progressDialog.show();
+    }
+
+    private void  hideProgressDialog(){
+
+        if(progressDialog!=null && progressDialog.isShowing()){
+            progressDialog.cancel();
+        }
     }
 }

@@ -73,4 +73,9 @@ public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHold
             container = (CardView) itemView.findViewById(R.id.pgContainer);
         }
     }
+
+    public void changeTheList(List<Pg> list){
+        this.list = list;
+        this.notifyDataSetChanged();
+    }
 }

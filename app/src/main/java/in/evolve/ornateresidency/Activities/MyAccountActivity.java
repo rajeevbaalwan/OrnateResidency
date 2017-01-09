@@ -1,6 +1,7 @@
 package in.evolve.ornateresidency.Activities;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,10 +9,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.SharedPrefUtil;
 import in.evolve.ornateresidency.Utils.UtilMethods;
 
 public class MyAccountActivity extends AppCompatActivity{
@@ -19,6 +24,11 @@ public class MyAccountActivity extends AppCompatActivity{
     private Toolbar toolbar;
     private RelativeLayout container;
     private AnimationDrawable animationDrawable;
+    private SharedPrefUtil sharedPrefUtil;
+    private EditText name;
+    private EditText email;
+    private EditText phone;
+    private ImageView gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,25 @@ public class MyAccountActivity extends AppCompatActivity{
         setContentView(R.layout.activity_my_account);
         overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
         container = (RelativeLayout) findViewById(R.id.myaccount_landing_layout);
+        sharedPrefUtil = new SharedPrefUtil(MyAccountActivity.this);
+
+        name = (EditText) findViewById(R.id.input_full_name);
+        phone = (EditText) findViewById(R.id.input_mobile_number);
+        email = (EditText) findViewById(R.id.input_email_address);
+        gender = (ImageView) findViewById(R.id.input_gender);
+
+        User user = sharedPrefUtil.getLoggedInUser();
+
+        name.setText(user.getUserName());
+        email.setText(user.getUserEmail());
+        phone.setText(user.getUserPhone());
+
+        if (user.getUserGender().startsWith("F") || user.getUserGender().startsWith("f")){
+
+        }else{
+
+        }
+
 
         animationDrawable= (AnimationDrawable) container.getBackground();
         animationDrawable.setEnterFadeDuration(6000);

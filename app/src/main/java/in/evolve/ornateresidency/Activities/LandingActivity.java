@@ -84,20 +84,17 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         switch(v.getId()) {
 
             case R.id.my_bookings:
-
                 Intent inte = new Intent(LandingActivity.this,MyBookingsActivity.class);
                 startActivity(inte);
                 break;
             case R.id.pg_radiobutton:
 
-                Intent inPg = new Intent(LandingActivity.this, SearchActivity.class);
-                inPg.putExtra("type","pg");
+                Intent inPg = new Intent(LandingActivity.this, PgListActivity.class);
                 startActivity(inPg);
 
                 break;
             case R.id.guest_house_radiobutton:
-                Intent inGh = new Intent(LandingActivity.this, SearchActivity.class);
-                inGh.putExtra("type","gh");
+                Intent inGh = new Intent(LandingActivity.this, GuestHouseListActivity.class);
                 startActivity(inGh);
                 break;
             case R.id.my_account:

@@ -75,4 +75,9 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
             container = (CardView) itemView.findViewById(R.id.pgContainer);
         }
     }
+
+    public void changeTheList(List<GuestHouse> list){
+        this.list = list;
+        this.notifyDataSetChanged();
+    }
 }

@@ -8,18 +8,30 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import in.evolve.ornateresidency.Adapters.PgListAdapter;
 import in.evolve.ornateresidency.Models.Pg;
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.UtilMethods;
 
 public class PgListActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private RecyclerView pgListRecyclerView;
     private Integer arr[]={R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1};
+    private MaterialDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +49,9 @@ public class PgListActivity extends AppCompatActivity {
 
         pgListRecyclerView= (RecyclerView) findViewById(R.id.pg_List_RecyclerView);
         pgListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PgListAdapter pgListAdapter = new PgListAdapter(this,getData(pgName,pgAddress));
+        PgListAdapter pgListAdapter = new PgListAdapter(PgListActivity.this,new ArrayList<Pg>());
         pgListRecyclerView.setAdapter(pgListAdapter);
+        fetchPgListFromServer();
 
     }
 
@@ -71,4 +84,73 @@ public class PgListActivity extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
     }
+
+    private void fetchPgListFromServer(){
+
+        showProgressDialog("Fetching PG List From Server...");
+        String url = "http://ornateresidency.com/api/retrievepglist.php";
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        Request  request  = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideProgressDialog();
+                        UtilMethods.toastL(PgListActivity.this,"Unable to connect to server...");
+                        PgListActivity.this.finish();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+
+                String res = response.body().string();
+
+                try{
+                    JSONObject jsonObject = new JSONObject(res);
+                    //Do anything here
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideProgressDialog();
+                    }
+                });
+            }
+
+
+        });
+    }
+
+    private void showProgressDialog(String msg){
+
+        progressDialog  = new MaterialDialog.Builder(PgListActivity.this)
+                .progress(true,100)
+                .content(msg)
+                .cancelable(false)
+                .build();
+        progressDialog.show();
+    }
+
+    private void  hideProgressDialog(){
+
+        if(progressDialog!=null && progressDialog.isShowing()){
+            progressDialog.cancel();
+        }
+    }
+
 }

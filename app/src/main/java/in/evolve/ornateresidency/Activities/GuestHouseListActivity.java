@@ -8,6 +8,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +26,7 @@ import in.evolve.ornateresidency.Adapters.PgListAdapter;
 import in.evolve.ornateresidency.Models.GuestHouse;
 import in.evolve.ornateresidency.Models.Pg;
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.UtilMethods;
 
 public class GuestHouseListActivity extends AppCompatActivity {
 
@@ -23,6 +34,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
     private RecyclerView pgListRecyclerView;
     private int arr[]={R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1};
 
+    private MaterialDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +51,10 @@ public class GuestHouseListActivity extends AppCompatActivity {
 
         pgListRecyclerView= (RecyclerView) findViewById(R.id.guestHouse_List_RecyclerView);
         pgListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        GuestHouseAdapter  adapter  = new GuestHouseAdapter(this,getData(pgName,pgAddress));
+        GuestHouseAdapter  adapter  = new GuestHouseAdapter(GuestHouseListActivity.this,new ArrayList<GuestHouse>());
         pgListRecyclerView.setAdapter(adapter);
+
+        fetchGuestHouseListFromServer();
 
     }
 
@@ -73,4 +87,63 @@ public class GuestHouseListActivity extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
     }
+
+    private void fetchGuestHouseListFromServer(){
+
+        String url = "http://ornateresidency.com/api/retrieveguesthouselist.php";
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        Request request  = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        UtilMethods.toastL(GuestHouseListActivity.this,"Unable to connect to server...");
+                        GuestHouseListActivity.this.finish();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+                String res = response.body().string();
+
+                try{
+                    JSONObject jsonObject = new JSONObject(res);
+                    //Do anything here
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+    }
+
+    private void showProgressDialog(String msg){
+
+        progressDialog  = new MaterialDialog.Builder(GuestHouseListActivity.this)
+                .progress(true,100)
+                .content(msg)
+                .cancelable(false)
+                .build();
+        progressDialog.show();
+    }
+
+    private void  hideProgressDialog(){
+
+        if(progressDialog!=null && progressDialog.isShowing()){
+            progressDialog.cancel();
+        }
+    }
+
 }
