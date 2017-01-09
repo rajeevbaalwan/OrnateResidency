@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -39,6 +40,8 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
     private ImageButton openMap;
     private LinearLayout container;
     private AnimationDrawable animationDrawable;
+    private Button bookPgButton;
+    private Button visitPgButton;
     private MaterialDialog progressDialog;
     private Pg pg;
 
@@ -58,6 +61,8 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
 
 
         pgName = (TextView) findViewById(R.id.pg_name);
+        bookPgButton= (Button) findViewById(R.id.bookPgButton);
+        visitPgButton= (Button) findViewById(R.id.visitpgButton);
         pgAddress = (TextView) findViewById(R.id.pg_address);
         singleSharingPrice = (TextView) findViewById(R.id.pg_single_sharing_price);
         doubleSharingPrice = (TextView) findViewById(R.id.pg_double_sharing_price);

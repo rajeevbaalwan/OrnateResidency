@@ -37,6 +37,7 @@
     <string name="couplesAllowed">Couples are allowed.</string>
     <string name="bookpg">BOOK PG</string>
     <string name="gender">Gender</string>
+    <string name="visitpg">VISIT PG</string>
     <string name="genre">Genre</string>
     <string name="pgregister">Register Property</string>
 
