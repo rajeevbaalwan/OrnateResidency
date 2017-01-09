@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,11 +42,12 @@ public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHold
 
         holder.pgName.setText(list.get(position).getPgName());
         holder.pgAddress.setText(list.get(position).getPgAddress());
-        holder.pgImage.setImageResource(list.get(position).getPgImageUrls());
+        holder.pgImage.setImageResource(R.drawable.landing_image1);
 
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 Intent intent = new Intent(context, PgBookingActivity.class);
                 context.startActivity(intent);
@@ -75,6 +77,7 @@ public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHold
     }
 
     public void changeTheList(List<Pg> list){
+        Log.d("changelist","called");
         this.list = list;
         this.notifyDataSetChanged();
     }

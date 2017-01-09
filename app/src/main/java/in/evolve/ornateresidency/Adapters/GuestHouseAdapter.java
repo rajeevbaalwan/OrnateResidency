@@ -43,7 +43,7 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
 
         holder.ghName.setText(list.get(position).getGhName());
         holder.ghAddress.setText(list.get(position).getGhaddress());
-        holder.ghImage.setImageResource(list.get(position).getGhImageUrls());
+        holder.ghImage.setImageResource(R.drawable.landing_image2);
 
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override

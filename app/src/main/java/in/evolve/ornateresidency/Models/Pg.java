@@ -9,6 +9,7 @@ import java.util.Map;
  */
 public class Pg implements Serializable{
 
+    private String pgId;
     private String pgName;
     private String pgAddress;
     private String pgLatitude;
@@ -19,7 +20,8 @@ public class Pg implements Serializable{
     private Map<String,String> pgRates;
     private Integer[] pgImageUrls;
 
-    public Pg(String pgName, String pgAddress, String pgLatitude, String pgLongitude, String pgLocality, String pgCity, List<String> pgFacilities, Map<String, String> pgRates, Integer[] pgImageUrls) {
+    public Pg(String  pgId,String pgName, String pgAddress, String pgLatitude, String pgLongitude, String pgLocality, String pgCity, List<String> pgFacilities, Map<String, String> pgRates, Integer[] pgImageUrls) {
+        this.pgId=pgId;
         this.pgName = pgName;
         this.pgAddress = pgAddress;
         this.pgLatitude = pgLatitude;
@@ -29,6 +31,10 @@ public class Pg implements Serializable{
         this.pgFacilities = pgFacilities;
         this.pgRates = pgRates;
         this.pgImageUrls=pgImageUrls;
+    }
+
+    public String getPgId() {
+        return this.pgId;
     }
 
     public String getPgName() {

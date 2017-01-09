@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,6 +15,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,12 +34,26 @@ public class PgListActivity extends AppCompatActivity {
     private RecyclerView pgListRecyclerView;
     private Integer arr[]={R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1};
     private MaterialDialog progressDialog;
+    private PgListAdapter pgListAdapter;
+    List<String> pgName;
+    List<String> pgId;
+    List<String> pgLocality;
+    List<String> pgCity;
+    List<String> pgAddress;
+    List<String> pgLatitude;
+    List<String> pgLongitude;
+    List<String> pgOneNightRate;
+    List<String> pgImage;
+    List<String> pgCategory;
+    List<String> pgAbout;
+    List<String> pgTerms;
+    List<String> pgHowToReach;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pg_list);
-        overridePendingTransition(R.anim.activity_close_scale,R.anim.activity_open_translate);
+       // overridePendingTransition(R.anim.activity_close_scale,R.anim.activity_open_translate);
 
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,20 +65,11 @@ public class PgListActivity extends AppCompatActivity {
 
         pgListRecyclerView= (RecyclerView) findViewById(R.id.pg_List_RecyclerView);
         pgListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PgListAdapter pgListAdapter = new PgListAdapter(PgListActivity.this,new ArrayList<Pg>());
+        pgListAdapter = new PgListAdapter(PgListActivity.this,new ArrayList<Pg>());
         pgListRecyclerView.setAdapter(pgListAdapter);
         fetchPgListFromServer();
 
-    }
 
-    private List<Pg> getData(String[] pgName, String[] pgAddress) {
-        List<Pg> list=new ArrayList<>();
-
-        for(int i=0;i<10;i++)
-        {
-            list.add(new Pg(pgName[i],pgAddress[i],"ab","ab","ab","ab",null,null,arr));
-        }
-        return list;
     }
 
     @Override
@@ -118,8 +125,22 @@ public class PgListActivity extends AppCompatActivity {
                 String res = response.body().string();
 
                 try{
-                    JSONObject jsonObject = new JSONObject(res);
+                    final JSONObject jsonObject = new JSONObject(res);
                     //Do anything here
+                    if(jsonObject.getBoolean("status")){
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                try {
+                                    pgListAdapter.changeTheList(getData(jsonObject.getJSONArray("results")));
+                                }catch (JSONException e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
@@ -134,6 +155,26 @@ public class PgListActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    private List<Pg> getData(JSONArray results) throws JSONException{
+        Log.d("get Data","called");
+        ArrayList<Pg> list=new ArrayList<>();
+
+        for(int i=0;i< results.length();i++)
+        {
+            JSONObject object=results.getJSONObject(i);
+
+            String name=object.getString("name");
+            String address=object.getString("address");
+            String locality=object.getString("locality");
+            String city=object.getString("city");
+            String latitude=object.getString("latitude");
+            String longitude=object.getString("longitude");
+
+            list.add(new Pg("",name,address,latitude,longitude,locality,city,null,null,null));
+        }
+        return list;
     }
 
     private void showProgressDialog(String msg){

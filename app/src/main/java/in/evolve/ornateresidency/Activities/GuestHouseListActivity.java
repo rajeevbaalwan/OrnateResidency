@@ -14,6 +14,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,40 +33,27 @@ public class GuestHouseListActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private RecyclerView pgListRecyclerView;
-    private int arr[]={R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1};
 
     private MaterialDialog progressDialog;
+    private GuestHouseAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_house_list);
-        overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
+        overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
 
-        toolbar= (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
 
-
-        String[] pgName =getResources().getStringArray(R.array.pgName);
-        String[] pgAddress=getResources().getStringArray(R.array.Address);
-
-        pgListRecyclerView= (RecyclerView) findViewById(R.id.guestHouse_List_RecyclerView);
+        pgListRecyclerView = (RecyclerView) findViewById(R.id.guestHouse_List_RecyclerView);
         pgListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        GuestHouseAdapter  adapter  = new GuestHouseAdapter(GuestHouseListActivity.this,new ArrayList<GuestHouse>());
+        adapter = new GuestHouseAdapter(GuestHouseListActivity.this, new ArrayList<GuestHouse>());
         pgListRecyclerView.setAdapter(adapter);
 
         fetchGuestHouseListFromServer();
 
-    }
-
-    private List<GuestHouse> getData(String[] pgName, String[] pgAddress) {
-        List<GuestHouse> list=new ArrayList<>();
-
-        for(int i=0;i<10;i++)
-        {
-            list.add(new GuestHouse(pgName[i],pgAddress[i],"ab","ab",null,null,arr));
-        }
-        return list;
     }
 
     @Override
@@ -89,7 +77,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
     }
 
     private void fetchGuestHouseListFromServer(){
-
+        showProgressDialog("Fetching Guest House List From Server...");
         String url = "http://ornateresidency.com/api/retrieveguesthouselist.php";
 
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -106,6 +94,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        hideProgressDialog();
                         UtilMethods.toastL(GuestHouseListActivity.this,"Unable to connect to server...");
                         GuestHouseListActivity.this.finish();
                     }
@@ -118,15 +107,53 @@ public class GuestHouseListActivity extends AppCompatActivity {
                 String res = response.body().string();
 
                 try{
-                    JSONObject jsonObject = new JSONObject(res);
+                    final JSONObject jsonObject = new JSONObject(res);
                     //Do anything here
+                    if(jsonObject.getBoolean("status"))
+                    {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try{
+                                 adapter.changeTheList(getData(jsonObject.getJSONArray("results")));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideProgressDialog();
+                    }
+                });
             }
         });
 
 
+    }
+
+    private List<GuestHouse> getData(JSONArray results) throws JSONException {
+        ArrayList<GuestHouse> list=new ArrayList<>();
+        for(int i=0;i<results.length();i++)
+        {
+            JSONObject object=results.getJSONObject(i);
+
+            String name=object.getString("name");
+            String address=object.getString("address");
+            String locality=object.getString("locality");
+            String city=object.getString("city");
+            String latitude=object.getString("latitude");
+            String longitude=object.getString("longitude");
+
+            list.add(new GuestHouse("",name,address,latitude,longitude,null,null,null));
+        }
+        return list;
     }
 
     private void showProgressDialog(String msg){

@@ -9,6 +9,8 @@ import java.util.Map;
  */
 public class GuestHouse implements Serializable{
 
+    private String terms;
+    private String id;
     private String ghName;
     private String ghaddress;
     private String ghLatitude;
@@ -17,7 +19,8 @@ public class GuestHouse implements Serializable{
     private Map<String,String> ghRates;
     private int[] ghImageUrls;
 
-    public GuestHouse(String ghName, String ghaddress, String ghLatitude, String ghLongitude, List<String> ghFacilities, Map<String, String> ghRates,int[] ghImageUrls) {
+    public GuestHouse(String id,String ghName, String ghaddress, String ghLatitude, String ghLongitude, List<String> ghFacilities, Map<String, String> ghRates,int[] ghImageUrls) {
+        this.id=id;
         this.ghName = ghName;
         this.ghaddress = ghaddress;
         this.ghLatitude = ghLatitude;
@@ -25,6 +28,10 @@ public class GuestHouse implements Serializable{
         this.ghFacilities = ghFacilities;
         this.ghRates = ghRates;
         this.ghImageUrls = ghImageUrls;
+    }
+
+    public String getId() {
+        return this.id;
     }
 
     public String getGhName() {
