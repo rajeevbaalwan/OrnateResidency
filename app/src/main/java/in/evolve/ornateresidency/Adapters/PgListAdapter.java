@@ -38,7 +38,7 @@ public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHold
     }
 
     @Override
-    public void onBindViewHolder(PgViewHolder holder, int position) {
+    public void onBindViewHolder(PgViewHolder holder, final int position) {
 
         holder.pgName.setText(list.get(position).getPgName());
         holder.pgAddress.setText(list.get(position).getPgAddress());
@@ -50,6 +50,7 @@ public class PgListAdapter extends RecyclerView.Adapter<PgListAdapter.PgViewHold
 
 
                 Intent intent = new Intent(context, PgBookingActivity.class);
+                intent.putExtra("pg",list.get(position));
                 context.startActivity(intent);
             }
         });

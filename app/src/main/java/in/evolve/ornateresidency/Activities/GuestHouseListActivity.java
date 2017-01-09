@@ -36,6 +36,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
 
     private MaterialDialog progressDialog;
     private GuestHouseAdapter adapter;
+    private GuestHouse guestHouse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
-
+        guestHouse = (GuestHouse) getIntent().getSerializableExtra("guesthouse");
         pgListRecyclerView = (RecyclerView) findViewById(R.id.guestHouse_List_RecyclerView);
         pgListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new GuestHouseAdapter(GuestHouseListActivity.this, new ArrayList<GuestHouse>());

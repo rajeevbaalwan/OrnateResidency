@@ -39,7 +39,7 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
     }
 
     @Override
-    public void onBindViewHolder(PgViewHolder holder, int position) {
+    public void onBindViewHolder(PgViewHolder holder, final int position) {
 
         holder.ghName.setText(list.get(position).getGhName());
         holder.ghAddress.setText(list.get(position).getGhaddress());
@@ -50,6 +50,7 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
             public void onClick(View view) {
 
                 Intent intent = new Intent(context, GuestHouseBookingActivity.class);
+                intent.putExtra("guesthouse",list.get(position));
                 context.startActivity(intent);
             }
         });
