@@ -297,7 +297,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="₹ 15000"
+            android:text="₹ 7000"
             android:gravity="center"/>
        </LinearLayout>
 
@@ -319,7 +319,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="₹ 6500"
+            android:text="₹ 8500"
             android:gravity="center"/>
        </LinearLayout>
 
@@ -341,7 +341,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="₹ 4000"
+            android:text="₹ 10000"
             android:gravity="center"/>
        </LinearLayout>
       </LinearLayout>
@@ -357,7 +357,8 @@
           android:padding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="@string/couplesAllowed"/>
+          android:text="@string/couplesAllowed"
+          android:background="@android:color/holo_purple"/>
 
      </android.support.v7.widget.CardView>
 

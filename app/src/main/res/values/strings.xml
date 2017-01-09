@@ -38,7 +38,7 @@
     <string name="visit">Visit PG</string>
     <string name="gender">Gender</string>
     <string name="genre">Genre</string>
-    <string name="pgregister">Register PG</string>
+    <string name="pgregister">Register Property</string>
 
     <array name="pgName">
         <item>New Friend PG</item>
