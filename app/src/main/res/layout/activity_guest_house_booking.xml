@@ -79,7 +79,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_weight="0.2"
                                     android:id="@+id/launch_map"
-                                    android:background="@color/colorPrimary"
+                                    android:background="@android:color/holo_blue_dark"
                                     android:src="@android:drawable/ic_dialog_map"/>
 
                             </LinearLayout>
@@ -236,23 +236,6 @@
                                             android:gravity="center"/>
                                     </LinearLayout>
 
-                                    <LinearLayout
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        android:orientation="vertical">
-                                        <ImageView
-                                            android:padding="10dp"
-                                            android:layout_width="70dp"
-                                            android:layout_height="50dp"
-                                            android:src="@drawable/almirahstorage"/>
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/almirah"
-                                            android:textSize="12sp"
-                                            android:gravity="center"/>
-                                    </LinearLayout>
-
                                 </LinearLayout>
 
                             </HorizontalScrollView>
@@ -260,10 +243,26 @@
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="5dp">
+                        <TextView
+                            android:id="@+id/conditions"
+                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/couplesAllowed"
+                            android:textColor="#ffffff"
+                            android:background="@android:color/holo_purple"/>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="5dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:elevation="5dp">
 
                         <LinearLayout
@@ -335,7 +334,7 @@
                     <android.support.v7.widget.CardView
                         app:cardCornerRadius="5dp"
                         android:elevation="5dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
@@ -381,7 +380,7 @@
                     </android.support.v7.widget.CardView>
 
                     <Button
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

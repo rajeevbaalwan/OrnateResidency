@@ -259,7 +259,7 @@
      </android.support.v7.widget.CardView>
      <android.support.v7.widget.CardView
          app:cardCornerRadius="5dp"
-         android:layout_marginTop="10dp"
+         android:layout_marginTop="5dp"
          android:layout_width="match_parent"
          android:layout_height="wrap_content">
       <LinearLayout
@@ -347,31 +347,17 @@
       </LinearLayout>
      </android.support.v7.widget.CardView>
 
-     <android.support.v7.widget.CardView
-         android:layout_marginTop="10dp"
+     <Button
+         android:layout_marginTop="5dp"
+         android:layout_marginBottom="10dp"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         app:cardCornerRadius="5dp">
-      <TextView
-          android:id="@+id/conditions"
-          android:padding="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/couplesAllowed"
-          android:background="@android:color/holo_purple"/>
+         android:text="@string/bookpg"
+         android:textStyle="bold"
+         android:textSize="20sp"
+         android:textColor="@android:color/white"
+         android:background="@drawable/landing_round_button"/>
 
-     </android.support.v7.widget.CardView>
-
-      <Button
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/visit"
-          android:textStyle="bold"
-          android:textSize="20sp"
-          android:textColor="@android:color/white"
-          android:background="@drawable/landing_round_button"/>
     </LinearLayout>
    </ScrollView>
 
