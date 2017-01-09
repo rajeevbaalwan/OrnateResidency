@@ -79,7 +79,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:id="@+id/launch_map"
-            android:background="@color/colorPrimary"
+            android:background="@android:color/holo_blue_dark"
             android:src="@android:drawable/ic_dialog_map"/>
 
        </LinearLayout>
@@ -347,6 +347,7 @@
       </LinearLayout>
      </android.support.v7.widget.CardView>
      <LinearLayout
+         android:layout_marginTop="15dp"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:orientation="horizontal">
