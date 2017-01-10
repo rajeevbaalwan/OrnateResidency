@@ -56,7 +56,7 @@ public class SharedPrefUtil {
         return sharedPreferences.getBoolean(IS_LOGGED_IN,false);
     }
 
-    private void logOutUser(){
+    public void logOutUser(){
         editor.clear().commit();
     }
 }

@@ -1,5 +1,6 @@
 package in.evolve.ornateresidency.Activities;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -78,10 +79,20 @@ public class MyAccountActivity extends AppCompatActivity{
         switch (id)
         {
             case R.id.my_account_logout:
+                sharedPrefUtil.logOutUser();
+
+                Intent intent = new Intent(MyAccountActivity.this,LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+                break;
             case R.id.save_details:
                 UtilMethods.toastS(this,"hey dude");
+                break;
             case R.id.home:
+
                 MyAccountActivity.this.finish();
+                break;
         }
         return true;
     }
