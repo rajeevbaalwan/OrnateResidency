@@ -14,7 +14,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MaterialTheme.Base">
-        <activity android:name=".Activities.LoginActivity"></activity>
+        <activity android:name=".Activities.LoginActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
 
         <receiver android:name=".Reciever.SmsReceiver">
             <intent-filter>
@@ -22,7 +24,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Activities.LandingActivity" >
+        <activity android:name=".Activities.LandingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,17 +35,25 @@
         </activity>
         <activity
             android:name=".Activities.ListYourPlaceActivity"
-            android:theme="@style/MaterialTheme.Default" />
+            android:theme="@style/MaterialTheme.Default"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.FeedBackActivity"
-            android:theme="@style/MaterialTheme.Default" />
+            android:theme="@style/MaterialTheme.Default"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.MyAccountActivity"
-            android:theme="@style/MaterialTheme.Default" />
+            android:theme="@style/MaterialTheme.Default"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.SearchActivity"
             android:launchMode="singleTop"
-            android:theme="@style/MaterialTheme.Default">
+            android:theme="@style/MaterialTheme.Default"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -53,14 +65,29 @@
         <activity
             android:name=".Activities.MobileInput"
             android:theme="@style/MaterialTheme.Default"
-            android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity android:name=".Activities.PgListActivity" />
-        <activity android:name=".Activities.PgBookingActivity" />
-        <activity android:name=".Activities.GuestHouseBookingActivity" />
-        <activity android:name=".Activities.GuestHouseListActivity" />
-        <activity android:name=".Activities.SplashScreenActivity">
+            android:windowSoftInputMode="stateAlwaysVisible"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.PgListActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.PgBookingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.GuestHouseBookingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.GuestHouseListActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.SplashScreenActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Activities.MyBookingsActivity" android:theme="@style/MaterialTheme.Default"></activity>
+        <activity android:name=".Activities.MyBookingsActivity"
+            android:theme="@style/MaterialTheme.Default"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

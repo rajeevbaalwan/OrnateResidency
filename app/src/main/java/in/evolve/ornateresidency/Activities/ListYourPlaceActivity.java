@@ -14,6 +14,7 @@ import android.transition.Explode;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
@@ -46,7 +47,7 @@ public class ListYourPlaceActivity extends AppCompatActivity {
     private TextInputLayout addressInputLayout;
     private TextInputLayout numberofRoomsInputLayout;
     private TextInputLayout phoneInputLayout;
-    private FloatingActionButton submitRequest;
+    private Button submitRequest;
     private RelativeLayout container;
     private AnimationDrawable animationDrawable;
     private MaterialDialog progressDialog;
@@ -79,16 +80,13 @@ public class ListYourPlaceActivity extends AppCompatActivity {
         phoneInputLayout = (TextInputLayout) findViewById(R.id.input_layout_mobile);
         addressInputLayout = (TextInputLayout) findViewById(R.id.input_layout_full_address);
         numberofRoomsInputLayout = (TextInputLayout) findViewById(R.id.input_layout_number_rooms);
-        submitRequest = (FloatingActionButton) findViewById(R.id.submitPropertyRequestButton);
-
+       submitRequest= (Button) findViewById(R.id.submitPropertyRequestButton);
         submitRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 submitDetails();
             }
         });
-
-
     }
 
     private void submitDetails(){
