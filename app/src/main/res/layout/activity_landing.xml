@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/landing_layout"
     tools:context="in.evolve.ornateresidency.Activities.LandingActivity"
-    android:background="@drawable/pg">
+    android:background="@drawable/landing">
 
     <include
         android:id="@+id/fab_layout"
