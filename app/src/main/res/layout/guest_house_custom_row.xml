@@ -52,6 +52,7 @@
                             android:textStyle="bold"
                             android:text="Pg Name"/>
                         <TextView
+                            android:maxLines="2"
                             android:layout_weight="0.5"
                             android:padding="1dp"
                             android:layout_width="match_parent"

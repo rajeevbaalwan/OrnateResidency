@@ -22,7 +22,13 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Activities.LandingActivity" />
+        <activity android:name=".Activities.LandingActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.ListYourPlaceActivity"
             android:theme="@style/MaterialTheme.Default" />
@@ -53,11 +59,6 @@
         <activity android:name=".Activities.GuestHouseBookingActivity" />
         <activity android:name=".Activities.GuestHouseListActivity" />
         <activity android:name=".Activities.SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Activities.MyBookingsActivity" android:theme="@style/MaterialTheme.Default"></activity>
     </application>

@@ -192,7 +192,8 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
             @Override
             public void onClick(View view) {
 
-                com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog = com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(new com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener() {
+                com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog =
+                        com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(new com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
 

@@ -26,11 +26,13 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.internal.Util;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Locale;
 
 import in.evolve.ornateresidency.AppContext;
@@ -49,6 +51,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
     private TextView doubleSharingPrice;
     private TextView trippleSharingPrice;
     private TextView conditions;
+    private  TextView visitPgDate;
     private ImageView pgImage;
     private ImageButton openMap;
     private LinearLayout container;
@@ -61,6 +64,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
     private User user;
     private ImageLoader imageLoader;
     private DisplayImageOptions options;
+    private LinearLayout visitDate;
 
 
     @Override
@@ -123,7 +127,11 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
         singleSharingPrice = (TextView) findViewById(R.id.pg_single_sharing_price);
         doubleSharingPrice = (TextView) findViewById(R.id.pg_double_sharing_price);
         trippleSharingPrice = (TextView) findViewById(R.id.pg_tripple_sharing_price);
+        visitDate= (LinearLayout) findViewById(R.id.visit_Pg_Date_Calendar);
+         visitPgDate= (TextView) findViewById(R.id.visitPgDate);
+        Calendar calendar=Calendar.getInstance();
 
+        visitPgDate.setText(calendar.get(Calendar.DAY_OF_MONTH)+" "+(calendar.get(Calendar.MONTH)+1)+" "+calendar.get(Calendar.YEAR));
 
         singleSharingPrice.setText(pg.getPgRates().get("single"));
         doubleSharingPrice.setText(pg.getPgRates().get("double"));
@@ -142,6 +150,23 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
                 startActivity(intent);
 
             }
+        });
+
+        visitDate.setOnClickListener(new View.OnClickListener() {
+            Calendar calendar=Calendar.getInstance();
+            @Override
+            public void onClick(View view) {
+                com.wdullaer.materialdatetimepicker.date.DatePickerDialog datePickerDialog =
+                        com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(new com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+                        visitPgDate.setText(dayOfMonth+"-"+monthOfYear+1+"-"+year);
+                    }
+                },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show(getFragmentManager(),"visitPgDate");
+
+        }
         });
 
         bookPgButton.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,7 @@
     android:background="@drawable/round_rect_fab_menu"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="220dp"
+    android:layout_width="250dp"
     android:layout_height="wrap_content">
 
 
@@ -19,7 +19,7 @@
         <ImageView
             android:src="@drawable/account"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.3"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
@@ -27,7 +27,7 @@
             android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_my_account"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -44,7 +44,7 @@
 
             android:src="@drawable/pgregister"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.3"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
@@ -52,7 +52,7 @@
             android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/pgregister"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -70,7 +70,7 @@
 
             android:src="@drawable/faq"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.3"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
@@ -78,7 +78,7 @@
             android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_show_faq"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -94,7 +94,7 @@
         <ImageView
             android:src="@drawable/ic_call_us"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.3"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
@@ -102,7 +102,7 @@
             android:textColor="@color/switch_thumb_disabled_material_dark"
             android:text="@string/fab_call_us"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -118,7 +118,7 @@
         <ImageView
             android:src="@drawable/ic_share"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.3"
             android:layout_height="match_parent" />
         <TextView
             android:gravity="left"
@@ -127,7 +127,7 @@
             android:text="@string/fab_share_app"
             android:layout_width="0dp"
             android:layout_gravity="center"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -144,7 +144,7 @@
     <ImageView
         android:src="@drawable/feedback"
         android:layout_width="0dp"
-        android:layout_weight="0.4"
+        android:layout_weight="0.3"
         android:layout_height="match_parent" />
     <TextView
         android:gravity="left"
@@ -152,7 +152,7 @@
         android:textColor="@color/switch_thumb_disabled_material_dark"
         android:text="@string/fab_feedback"
         android:layout_width="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="0.7"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

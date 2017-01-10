@@ -69,7 +69,7 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
         holder.ghName.setText(list.get(position).getGhName());
         holder.ghAddress.setText(list.get(position).getGhaddress());
         holder.ghImage.setImageResource(R.drawable.landing_image2);
-        holder.ghPrice.setText(list.get(position).getGhRates());
+        holder.ghPrice.setText("₹ "+list.get(position).getGhRates()+" per night ");
 
         imageLoader.displayImage(Constants.WEBSITE_URL+list.get(position).getGhImageUrls(), holder.ghImage, options, new ImageLoadingListener() {
             @Override
