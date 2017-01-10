@@ -182,9 +182,9 @@ public class ListYourPlaceActivity extends AppCompatActivity {
 
         String url = Constants.BASE_URL+"listyourhouse.php?name="+nameInput.getText().toString()+
                 "&email="+emailInput.getText().toString()+"&phone="+phoneInput.getText().toString()
-                +"&nrooms="+numberOfRoomsInput.getText().toString()+"&address="+addressInput.getText().toString();
+                +"&nrooms="+numberOfRoomsInput.getText().toString()+"&type=PG&address="+addressInput.getText().toString();
 
-        url.replaceAll(" ","%20");
+        url = url.replaceAll(" ","%20");
 
         OkHttpClient client = new OkHttpClient();
 

@@ -82,7 +82,7 @@ public class FeedBackActivity extends AppCompatActivity {
             showProgressDialog("Submitting Feedback..");
             SharedPrefUtil sharedPrefUtil = new SharedPrefUtil(FeedBackActivity.this);
             String url = Constants.BASE_URL + "feedbacksubmit.php?phone="+sharedPrefUtil.getLoggedInUser().getUserPhone()+"&feedback="+feedBackInput.getText().toString();
-
+            url = url.replaceAll(" ","%20");
             OkHttpClient okHttpClient = new OkHttpClient();
 
             final Request request = new Request.Builder()

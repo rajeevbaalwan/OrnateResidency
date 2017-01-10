@@ -123,8 +123,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
         singleSharingPrice = (TextView) findViewById(R.id.pg_single_sharing_price);
         doubleSharingPrice = (TextView) findViewById(R.id.pg_double_sharing_price);
         trippleSharingPrice = (TextView) findViewById(R.id.pg_tripple_sharing_price);
-        conditions = (TextView) findViewById(R.id.conditions);
-        conditions.setText(pg.getTerms());
+
 
         singleSharingPrice.setText(pg.getPgRates().get("single"));
         doubleSharingPrice.setText(pg.getPgRates().get("double"));

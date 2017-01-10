@@ -256,8 +256,8 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
             public void onClick(View view) {
                 showProgressDialog("Connecting...");
                 User user=sharedPrefUtil.getLoggedInUser();
-                 String url=BASE_URL+"bookguesthouse.php?pgid="+guestHouse.getId()+"&name="+user.getUserName()
-                         +"&email="+user+"&phone="+user.getUserPhone()+"&date=0"+"&number=0"+"&nrooms=0";
+                String url=BASE_URL+"bookguesthouse.php?ghid="+guestHouse.getId()+"&name="+user.getUserName()
+                         +"&email="+user.getUserEmail()+"&phone="+user.getUserPhone()+"&date="+checkInDate.getText().toString()+"&number=0"+"&nrooms=0";
                 url.replaceAll(" ","%20");
 
                 OkHttpClient client=new OkHttpClient();

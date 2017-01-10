@@ -144,6 +144,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
         {
             JSONObject object=results.getJSONObject(i);
 
+            String id = object.getString("ghid");
             String rate=object.getString("onenightrate");
             String name=object.getString("name");
             String address=object.getString("address");
@@ -154,7 +155,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
             String imageUrl = object.getString("image");
 
 
-            list.add(new GuestHouse("",name,address,latitude,longitude,null,rate,imageUrl,""));
+            list.add(new GuestHouse(id,name,address,latitude,longitude,null,rate,imageUrl,""));
         }
         return list;
     }
