@@ -21,7 +21,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import in.evolve.ornateresidency.Adapters.PgListAdapter;
 import in.evolve.ornateresidency.Models.Pg;
@@ -35,19 +37,7 @@ public class PgListActivity extends AppCompatActivity {
     private Integer arr[]={R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1,R.drawable.landing_image1};
     private MaterialDialog progressDialog;
     private PgListAdapter pgListAdapter;
-    List<String> pgName;
-    List<String> pgId;
-    List<String> pgLocality;
-    List<String> pgCity;
-    List<String> pgAddress;
-    List<String> pgLatitude;
-    List<String> pgLongitude;
-    List<String> pgOneNightRate;
-    List<String> pgImage;
-    List<String> pgCategory;
-    List<String> pgAbout;
-    List<String> pgTerms;
-    List<String> pgHowToReach;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,10 +160,19 @@ public class PgListActivity extends AppCompatActivity {
             String address=object.getString("address");
             String locality=object.getString("locality");
             String city=object.getString("city");
+            String imageUrl = object.getString("image");
             String latitude=object.getString("latitude");
             String longitude=object.getString("longitude");
+            String singleShareing = object.getString("singleshare");
+            String doubleSharing = object.getString("doubleshare");
+            String tripleSharing = object.getString("tripleshare");
 
-            list.add(new Pg(id,name,address,latitude,longitude,locality,city,null,null,null,""));
+            Map<String,String> map = new HashMap<>();
+            map.put("single",singleShareing);
+            map.put("double",doubleSharing);
+            map.put("triple",tripleSharing);
+
+            list.add(new Pg(id,name,address,latitude,longitude,locality,city,null,map,imageUrl,""));
         }
         return list;
     }

@@ -33,7 +33,6 @@ public class GuestHouseListActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private RecyclerView pgListRecyclerView;
-
     private MaterialDialog progressDialog;
     private GuestHouseAdapter adapter;
     private GuestHouse guestHouse;
