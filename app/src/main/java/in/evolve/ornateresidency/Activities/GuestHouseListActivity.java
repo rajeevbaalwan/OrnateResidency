@@ -145,15 +145,17 @@ public class GuestHouseListActivity extends AppCompatActivity {
         {
             JSONObject object=results.getJSONObject(i);
 
-            String rate=object.getString("");
+            String rate=object.getString("onenightrate");
             String name=object.getString("name");
             String address=object.getString("address");
             String locality=object.getString("locality");
             String city=object.getString("city");
             String latitude=object.getString("latitude");
             String longitude=object.getString("longitude");
+            String imageUrl = object.getString("image");
 
-            list.add(new GuestHouse("",name,address,latitude,longitude,null,rate,null,""));
+
+            list.add(new GuestHouse("",name,address,latitude,longitude,null,rate,imageUrl,""));
         }
         return list;
     }
