@@ -137,7 +137,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
             @Override
             public void onClick(View view) {
 
-                String uri = String.format(Locale.ENGLISH, "geo:%f,%f", "23.41", "56.789");
+                String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 23.41, 56.789);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(intent);
 
