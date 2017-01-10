@@ -86,9 +86,7 @@ public class MyAccountActivity extends AppCompatActivity{
                 startActivity(intent);
 
                 break;
-            case R.id.save_details:
-                UtilMethods.toastS(this,"hey dude");
-                break;
+
             case android.R.id.home:
 
                 MyAccountActivity.this.finish();

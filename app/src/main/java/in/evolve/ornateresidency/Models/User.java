@@ -12,14 +12,25 @@ public class User implements Serializable{
     private String userGender;
     private String userPhone;
     private String dob;
+    private String id;
+
 
 
     public User(String userName, String userEmail, String userGender, String userPhone, String dob) {
+
         this.userName = userName;
         this.userEmail = userEmail;
         this.userGender = userGender;
         this.userPhone = userPhone;
         this.dob = dob;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUserGender() {

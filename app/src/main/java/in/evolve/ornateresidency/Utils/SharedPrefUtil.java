@@ -18,7 +18,6 @@ public class SharedPrefUtil {
     private String KEY_USER_PHONE = "user_phone";
     private String KEY_USER_EMAIL = "user_email";
     private String KEY_USER_GENDER = "user_gender";
-
     private String IS_LOGGED_IN = "is_logged_in";
     private String FILE_NAME  = "ornate_shared_pref";
     private Context context;
