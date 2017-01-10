@@ -1,5 +1,6 @@
 package in.evolve.ornateresidency.Activities;
 
+import android.app.ProgressDialog;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +17,20 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.gson.JsonObject;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.Constants;
 import in.evolve.ornateresidency.Utils.UtilMethods;
 
 public class ListYourPlaceActivity extends AppCompatActivity {
@@ -35,6 +49,7 @@ public class ListYourPlaceActivity extends AppCompatActivity {
     private FloatingActionButton submitRequest;
     private RelativeLayout container;
     private AnimationDrawable animationDrawable;
+    private MaterialDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +178,71 @@ public class ListYourPlaceActivity extends AppCompatActivity {
 
     private void sendDetailsToServer(){
 
-        UtilMethods.toastL(ListYourPlaceActivity.this,"Working");
+        showProgressDialog("Connecting : ");
+
+        String url = Constants.BASE_URL+"listyourhouse.php?name="+nameInput.getText().toString()+
+                "&email="+emailInput.getText().toString()+"&phone="+phoneInput.getText().toString()
+                +"&nrooms="+numberOfRoomsInput.getText().toString()+"&address="+addressInput.getText().toString();
+
+        url.replaceAll(" ","%20");
+
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideProgressDialog();
+                        UtilMethods.toastL(ListYourPlaceActivity.this,"Check Internet Connction");
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+                String res = response.body().string();
+
+                try{
+                    JSONObject jsonObject = new JSONObject(res);
+                    if (jsonObject.getBoolean("status")){
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideProgressDialog();
+                                UtilMethods.toastL(ListYourPlaceActivity.this,"Your Request Is Listed");
+                                ListYourPlaceActivity.this.finish();
+                            }
+                        });
+
+                    }
+                    else{
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideProgressDialog();
+                                UtilMethods.toastL(ListYourPlaceActivity.this,"There is Some Problem ..Try Again");
+                            }
+                        });
+                    }
+
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
 
 
     }
@@ -190,5 +269,23 @@ public class ListYourPlaceActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.activity_open_scale,R.anim.activity_close_translate);
         if(animationDrawable!=null && !animationDrawable.isRunning())
             animationDrawable.stop();
+    }
+
+    private void showProgressDialog(String msg){
+
+        progressDialog = new MaterialDialog.Builder(ListYourPlaceActivity.this)
+                .cancelable(false)
+                .content(msg)
+                .progress(true,100)
+                .build();
+
+        progressDialog.show();
+    }
+
+    private void hideProgressDialog(){
+
+        if (progressDialog!=null && progressDialog.isShowing()){
+            progressDialog.cancel();
+        }
     }
 }

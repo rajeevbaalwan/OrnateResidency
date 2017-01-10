@@ -7,6 +7,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -108,15 +109,17 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
                 showMenu();
                 break;
             case R.id.fab_show_faq:
-                Intent intent=new Intent(LandingActivity.this,GuestHouseBookingActivity.class);
-                startActivity(intent);
+                String url = "http://www.ornateresidency.com";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
                 showMenu();
                 break;
             case R.id.fab_share_app:
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_TEXT, "I am sharing my app::");
-                startActivity(Intent.createChooser(i, "Share via:"));
+                Intent i1 = new Intent(Intent.ACTION_SEND);
+                i1.setType("text/plain");
+                i1.putExtra(Intent.EXTRA_TEXT, Constants.SHARE_APP_TEXT);
+                startActivity(Intent.createChooser(i1, "Share via:"));
                 showMenu();
                 break;
             case R.id.fab_call_us:

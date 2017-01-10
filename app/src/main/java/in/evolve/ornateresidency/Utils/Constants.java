@@ -9,4 +9,5 @@ public interface Constants {
 
     Uri OWNER_PHONE = (Uri.parse("tel:"+"9050567809"));
     String BASE_URL = "http://www.ornateresidency.com/api/";
+    String SHARE_APP_TEXT = "Share This App And i will give u money:";
 }
