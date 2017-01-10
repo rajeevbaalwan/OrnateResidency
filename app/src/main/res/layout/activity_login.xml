@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_logo"
-        android:padding="30dp"/>
+        android:padding="100dp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
