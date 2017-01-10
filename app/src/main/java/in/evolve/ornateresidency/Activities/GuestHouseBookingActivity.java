@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -21,11 +22,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -35,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import in.evolve.ornateresidency.AppContext;
 import in.evolve.ornateresidency.Models.GuestHouse;
 import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
@@ -77,6 +85,9 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
     private SharedPrefUtil sharedPrefUtil;
     private User user;
     private MaterialDialog progressDialog;
+    private ImageView guestHouseImage;
+    private ImageLoader imageLoader;
+    private DisplayImageOptions options;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +101,52 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
         animationDrawable.setExitFadeDuration(3000);
         animationDrawable.start();
 
+
+        imageLoader = AppContext.imageLoader;
+
+        AppContext.getInstance().initImageLoader(GuestHouseBookingActivity.this);  //Initialising The ImageLoader
+
+        //just a check we found on stack overflow for adapter problem we were facing...
+
+        this.options = new DisplayImageOptions.Builder()
+                .showImageOnFail(R.drawable.abc_textfield_activated_mtrl_alpha)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .build();
+
+        guestHouseImage = (ImageView) findViewById(R.id.guest_house_image);
         guestHouse=(GuestHouse)getIntent().getSerializableExtra("guesthouse");
 
+        imageLoader.displayImage(Constants.WEBSITE_URL+guestHouse.getGhImageUrls(), guestHouseImage, options, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String s, View view) {
+
+            }
+
+            @Override
+            public void onLoadingFailed(String s, View view, FailReason failReason) {
+
+            }
+
+            @Override
+            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+
+            }
+
+            @Override
+            public void onLoadingCancelled(String s, View view) {
+
+            }
+        });
+
+
+
+
+
         ghName= (TextView) findViewById(R.id.guest_house_name);
+        ghName.setText(guestHouse.getGhName());
         openMap = (ImageButton) findViewById(R.id.launch_map);
         openMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +159,10 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
             }
         });
         ghAddress= (TextView) findViewById(R.id.guest_house_address);
+        ghAddress.setText(guestHouse.getGhaddress());
         singleDeluxePrice= (TextView) findViewById(R.id.single_deluxe_price);
+        singleDeluxePrice.setText(guestHouse.getGhRates());
+
         checkInLayout= (LinearLayout) findViewById(R.id.check_in_layout);
         checkOutLayout= (LinearLayout) findViewById(R.id.check_out_layout);
         checkInDate = (TextView) findViewById(R.id.check_in_date);

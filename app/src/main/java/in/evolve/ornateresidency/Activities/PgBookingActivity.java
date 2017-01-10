@@ -1,6 +1,7 @@
 package in.evolve.ornateresidency.Activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +10,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -26,6 +33,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Locale;
 
+import in.evolve.ornateresidency.AppContext;
 import in.evolve.ornateresidency.Models.Pg;
 import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
@@ -41,6 +49,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
     private TextView doubleSharingPrice;
     private TextView trippleSharingPrice;
     private TextView conditions;
+    private ImageView pgImage;
     private ImageButton openMap;
     private LinearLayout container;
     private AnimationDrawable animationDrawable;
@@ -50,6 +59,8 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
     private Pg pg;
     private SharedPrefUtil sharedPrefUtil;
     private User user;
+    private ImageLoader imageLoader;
+    private DisplayImageOptions options;
 
 
     @Override
@@ -58,7 +69,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
         setContentView(R.layout.activity_pg_booking);
         overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
         container = (LinearLayout) findViewById(R.id.activity_pg_booking_landing_layout);
-
+        pgImage = (ImageView) findViewById(R.id.pg_image_big);
         pg = (Pg) getIntent().getSerializableExtra("pg");
         animationDrawable = (AnimationDrawable) container.getBackground();
         animationDrawable.setEnterFadeDuration(6000);
@@ -66,14 +77,58 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
         animationDrawable.start();
 
 
+        imageLoader = AppContext.imageLoader;
+
+        AppContext.getInstance().initImageLoader(PgBookingActivity.this);  //Initialising The ImageLoader
+
+        //just a check we found on stack overflow for adapter problem we were facing...
+
+        this.options = new DisplayImageOptions.Builder()
+                .showImageOnFail(R.drawable.abc_textfield_activated_mtrl_alpha)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .build();
+
+        imageLoader.displayImage(Constants.WEBSITE_URL+pg.getPgImageUrls(), pgImage, options, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String s, View view) {
+
+            }
+
+            @Override
+            public void onLoadingFailed(String s, View view, FailReason failReason) {
+
+            }
+
+            @Override
+            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+
+            }
+
+            @Override
+            public void onLoadingCancelled(String s, View view) {
+
+            }
+        });
+
+
         pgName = (TextView) findViewById(R.id.pg_name);
+        pgName.setText(pg.getPgName());
         bookPgButton= (Button) findViewById(R.id.book_Pg_Button);
         visitPgButton= (Button) findViewById(R.id.visit_pg_Button);
         pgAddress = (TextView) findViewById(R.id.pg_address);
+        pgAddress.setText(pg.getPgAddress());
         singleSharingPrice = (TextView) findViewById(R.id.pg_single_sharing_price);
         doubleSharingPrice = (TextView) findViewById(R.id.pg_double_sharing_price);
         trippleSharingPrice = (TextView) findViewById(R.id.pg_tripple_sharing_price);
         conditions = (TextView) findViewById(R.id.conditions);
+        conditions.setText(pg.getTerms());
+
+        singleSharingPrice.setText(pg.getPgRates().get("single"));
+        doubleSharingPrice.setText(pg.getPgRates().get("double"));
+        trippleSharingPrice.setText(pg.getPgRates().get("triple"));
 
         sharedPrefUtil=new SharedPrefUtil(PgBookingActivity.this);
 

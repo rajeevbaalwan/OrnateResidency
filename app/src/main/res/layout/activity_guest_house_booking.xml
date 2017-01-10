@@ -19,9 +19,11 @@
             android:orientation="vertical">
 
             <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/guest_house_image"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/landing_image1"/>
+                />
             <ScrollView
                 android:padding="5dp"
                 android:layout_width="match_parent"

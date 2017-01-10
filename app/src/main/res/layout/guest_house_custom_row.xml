@@ -24,7 +24,7 @@
                 android:id="@+id/gh_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/landing_image1" />
+                 />
 
             <FrameLayout
                 android:layout_width="match_parent"
