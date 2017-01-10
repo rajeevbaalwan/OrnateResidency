@@ -1,18 +1,15 @@
 package in.evolve.ornateresidency.Activities;
 
 import android.graphics.drawable.AnimationDrawable;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
@@ -49,10 +46,10 @@ public class MyAccountActivity extends AppCompatActivity{
         email.setText(user.getUserEmail());
         phone.setText(user.getUserPhone());
 
-        if (user.getUserGender().startsWith("F") || user.getUserGender().startsWith("f")){
-
+        if (user.getUserGender().startsWith("F")||user.getUserGender().startsWith("f")){
+          gender.setImageResource(R.drawable.ic_girl_icon);
         }else{
-
+           gender.setImageResource(R.drawable.ic_my_acc);
         }
 
 

@@ -3,6 +3,7 @@ package in.evolve.ornateresidency.Activities;
 
 import android.app.DatePickerDialog;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,19 +16,32 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import in.evolve.ornateresidency.Models.GuestHouse;
+import in.evolve.ornateresidency.Models.User;
 import in.evolve.ornateresidency.R;
+import in.evolve.ornateresidency.Utils.SharedPrefUtil;
 import in.evolve.ornateresidency.Utils.UtilMethods;
+import in.evolve.ornateresidency.Utils.Constants;
 
-public class GuestHouseBookingActivity extends AppCompatActivity {
+public class GuestHouseBookingActivity extends AppCompatActivity implements Constants{
 
     private ImageButton openMap;
     private TextView ghName;
@@ -57,6 +71,10 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
     private Calendar c1;
     private LinearLayout container;
     private AnimationDrawable animationDrawable;
+    private Button ghBookingButton;
+    private GuestHouse guestHouse;
+    private SharedPrefUtil sharedPrefUtil;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +88,7 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(3000);
         animationDrawable.start();
 
+        guestHouse=(GuestHouse)getIntent().getSerializableExtra("guesthouse");
 
         ghName= (TextView) findViewById(R.id.guest_house_name);
         openMap = (ImageButton) findViewById(R.id.launch_map);
@@ -85,13 +104,11 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
         });
         ghAddress= (TextView) findViewById(R.id.guest_house_address);
         singleDeluxePrice= (TextView) findViewById(R.id.single_deluxe_price);
-        doubleDeluxePrice= (TextView) findViewById(R.id.double_deluxe_price);
-        singleSuitPrice= (TextView) findViewById(R.id.single_suit_price);
-        doubleSuitPrice= (TextView) findViewById(R.id.double_suit_price);
         checkInLayout= (LinearLayout) findViewById(R.id.check_in_layout);
         checkOutLayout= (LinearLayout) findViewById(R.id.check_out_layout);
         checkInDate = (TextView) findViewById(R.id.check_in_date);
         checkOutDate = (TextView) findViewById(R.id.check_out_date);
+        ghBookingButton= (Button) findViewById(R.id.guest_house_booking_button);
 
         inDate=outDate=currentDay=Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         inMonth=outMonth=currentMonth=Calendar.getInstance().get(Calendar.MONTH)+1;
@@ -102,11 +119,14 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
         checkInDate.setText(chkInDate);
         checkOutDate.setText(chkOutDate);
 
-         SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
          c1=Calendar.getInstance();
          c1.set(currentYear,currentMonth,currentDay);
         c2=Calendar.getInstance();
         c3=Calendar.getInstance();
+
+        sharedPrefUtil=new SharedPrefUtil(GuestHouseBookingActivity.this);
+        user=sharedPrefUtil.getLoggedInUser();
+
         checkInLayout.setOnClickListener(new View.OnClickListener() {
 
             Calendar calendar = Calendar.getInstance();
@@ -170,6 +190,56 @@ public class GuestHouseBookingActivity extends AppCompatActivity {
             }
 
 
+        });
+
+        ghBookingButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                 String url=BASE_URL+"bookguesthouse.php?pgid="+guestHouse.getId()+"&name="+guestHouse.getGhName()
+                         +"&email="+user+"&phone="+user.getUserPhone()+"&date=0"+"&number=0"+"&nrooms=0";
+                OkHttpClient client=new OkHttpClient();
+                Request request=new Request.Builder()
+                        .get()
+                        .url(url)
+                        .build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Request request, IOException e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                UtilMethods.toastS(GuestHouseBookingActivity.this,"Unable to connect to Server....Try Again");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(Response response) throws IOException {
+
+                        String res=response.body().string();
+
+                        try{
+                            JSONObject jsonObject=new JSONObject(res);
+
+                            if(jsonObject.getBoolean("status"))
+                            {
+                                UtilMethods.toastS(GuestHouseBookingActivity.this,"GuestHouse is Booked For YOU");
+                                GuestHouseBookingActivity.this.finish();
+                            }
+                            else
+                            {
+                                //Log.d("status=","false");
+                                UtilMethods.toastS(GuestHouseBookingActivity.this,"Unable to connect to Server....Try Again");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
         });
     }
 

@@ -410,7 +410,7 @@
              android:textSize="20sp"
              android:textColor="@android:color/white"
              android:background="@android:color/holo_red_light"
-             android:id="@+id/visitpgButton"/>
+             android:id="@+id/visit_pg_Button"/>
 
         </LinearLayout>
        </LinearLayout>
@@ -437,7 +437,7 @@
          android:textSize="20sp"
          android:textColor="@android:color/white"
          android:background="@drawable/landing_round_button"
-         android:id="@+id/bookPgButton"/>
+         android:id="@+id/book_Pg_Button"/>
      </LinearLayout>
     </LinearLayout>
    </ScrollView>

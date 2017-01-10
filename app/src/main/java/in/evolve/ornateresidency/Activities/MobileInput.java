@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -161,9 +162,6 @@ public class MobileInput extends AppCompatActivity implements Constants{
                         });
 
                     }
-
-
-
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
@@ -229,6 +227,7 @@ public class MobileInput extends AppCompatActivity implements Constants{
 
         final EditText nameText = (EditText) view.findViewById(R.id.name_input);
         final EditText emailText = (EditText) view.findViewById(R.id.email_input);
+
         Spinner spinner = (Spinner) view.findViewById(R.id.genderSelectSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, new String[]{"Male","Female"});
@@ -240,7 +239,7 @@ public class MobileInput extends AppCompatActivity implements Constants{
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i==2){
+                if (i==1){
                     gender[0] = "Female";
                 }
             }
@@ -257,9 +256,10 @@ public class MobileInput extends AppCompatActivity implements Constants{
             public void onClick(View view) {
 
                 addInfoDialog.cancel();
-
                 String url = BASE_URL+"addnewphone.php?name="+nameText.getText().toString()+"&email="
-                        +emailText.getText().toString()+"&gender="+gender[0]+"&phone="+phoneNumber+"&dob=0";
+                        +emailText.getText().toString()+"&gender="+ gender[0] +"&phone="+phoneNumber+"&dob=0";
+                String r=url;
+               // Log.d(""+r,"");
                 OkHttpClient okHttpClient = new OkHttpClient();
 
                 Request request = new Request.Builder()

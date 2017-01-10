@@ -14,8 +14,8 @@ public class SharedPrefUtil {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String KEY_USER_NAME = "user_name";
-    private String KEY_USER_DOB = "user_email";
-    private String KEY_USER_PHONE = "user_gender";
+    private String KEY_USER_DOB = "user_dob";
+    private String KEY_USER_PHONE = "user_phone";
     private String KEY_USER_EMAIL = "user_email";
     private String KEY_USER_GENDER = "user_gender";
 

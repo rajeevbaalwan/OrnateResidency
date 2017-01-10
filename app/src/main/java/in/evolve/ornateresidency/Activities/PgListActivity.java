@@ -165,6 +165,7 @@ public class PgListActivity extends AppCompatActivity {
         {
             JSONObject object=results.getJSONObject(i);
 
+            String id=object.getString("pgid");
             String name=object.getString("name");
             String address=object.getString("address");
             String locality=object.getString("locality");
@@ -172,7 +173,7 @@ public class PgListActivity extends AppCompatActivity {
             String latitude=object.getString("latitude");
             String longitude=object.getString("longitude");
 
-            list.add(new Pg("",name,address,latitude,longitude,locality,city,null,null,null));
+            list.add(new Pg(id,name,address,latitude,longitude,locality,city,null,null,null,""));
         }
         return list;
     }

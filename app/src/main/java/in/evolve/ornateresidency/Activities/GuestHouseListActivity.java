@@ -152,7 +152,7 @@ public class GuestHouseListActivity extends AppCompatActivity {
             String latitude=object.getString("latitude");
             String longitude=object.getString("longitude");
 
-            list.add(new GuestHouse("",name,address,latitude,longitude,null,null,null));
+            list.add(new GuestHouse("",name,address,latitude,longitude,null,null,null,""));
         }
         return list;
     }
