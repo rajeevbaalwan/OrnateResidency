@@ -6,9 +6,4 @@
         android:title="Log Out"
         android:id="@+id/my_account_logout"/>
 
-    <item
-        android:id="@+id/save_details"
-        android:title="SAVE"
-        app:showAsAction="always"/>
-
 </menu>
