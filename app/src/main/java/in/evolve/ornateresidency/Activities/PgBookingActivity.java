@@ -51,6 +51,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
     private SharedPrefUtil sharedPrefUtil;
     private User user;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +76,7 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
         conditions = (TextView) findViewById(R.id.conditions);
 
         sharedPrefUtil=new SharedPrefUtil(PgBookingActivity.this);
-        user=sharedPrefUtil.getLoggedInUser();
+
 
         openMap = (ImageButton) findViewById(R.id.launch_map);
         openMap.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +101,12 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
        visitPgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url=BASE_URL+"visitpg.php?pgid="+pg.getPgId()+"&name="+pg.getPgName()
+                showProgressDialog("Connecting");
+                User user = sharedPrefUtil.getLoggedInUser();
+                String url=BASE_URL+"visitpg.php?pgid="+pg.getPgId()+"&name="+user.getUserName()
                         +"&email="+user.getUserEmail()+"&phone="+user.getUserPhone()+"&date=0"+"&time=0"+"&type=0";
+
+                url.replaceAll(" ","%20");
 
                 OkHttpClient client=new OkHttpClient();
                 Request request=new Request.Builder()
@@ -115,7 +120,8 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                //Log.d(""+r,"");
+                                hideProgressDialog();
+                                Log.d("on failure","");
                                 UtilMethods.toastS(PgBookingActivity.this,"Unable to connect to Server....Try Again");
                             }
                         });
@@ -131,13 +137,29 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
 
                             if(jsonObject.getBoolean("status"))
                             {
-                                UtilMethods.toastS(PgBookingActivity.this,"PG is Booked For YOU");
-                                PgBookingActivity.this.finish();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        hideProgressDialog();
+                                        UtilMethods.toastL(PgBookingActivity.this,"PG is Booked For YOU");
+                                        Intent intent = new Intent(PgBookingActivity.this,LandingActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    }
+                                });
+
+
                             }
                             else
                             {
-                                Log.d("status=","false");
-                                UtilMethods.toastS(PgBookingActivity.this,"Unable to connect to Server....Try Again");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        hideProgressDialog();
+                                        UtilMethods.toastL(PgBookingActivity.this,"Unable to connect to Server....Try Again");
+                                    }
+                                });
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -165,14 +187,14 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
 
 
     private void startBookPgProcess(Pg pg) {
-
+        showProgressDialog("Connecting");
       /*  $pgid = $_GET['pgid'];
         $pgname = $_GET['name'];
         $pgphone = $_GET['phone'];
         $pgemail = $_GET['email'];
         $pgdate = $_GET['date'];*/
-
-        String url=BASE_URL+"bookpg.php?pgid="+pg.getPgId()+"&name="+pg.getPgName()
+        User user = sharedPrefUtil.getLoggedInUser();
+        String url=BASE_URL+"bookpg.php?pgid="+pg.getPgId()+"&name="+user.getUserName()
                 +"&phone="+user.getUserPhone()+"&email="+user.getUserEmail()+"&date=0";
          url.replaceAll(" ","%20");
 
@@ -190,7 +212,8 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //Log.d("",""+url);
+                        hideProgressDialog();
+                        Log.d("on failure"," ");
                         UtilMethods.toastL(PgBookingActivity.this, "Unable to connect to server ... try again");
                     }
                 });
@@ -199,19 +222,37 @@ public class PgBookingActivity extends AppCompatActivity implements Constants {
             @Override
             public void onResponse(Response response) throws IOException {
 
-                String res = response.body().toString();
+                String res = response.body().string();
+                Log.d("josn string"+res,"....");
 
                 try {
                     JSONObject jsonObject = new JSONObject(res);
                     if(jsonObject.getBoolean("status"))
                     {
-                        UtilMethods.toastS(PgBookingActivity.this,"PG is Booked For YOU");
-                        PgBookingActivity.this.finish();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideProgressDialog();
+                                UtilMethods.toastS(PgBookingActivity.this,"PG is Booked For YOU");
+
+                                Intent intent = new Intent(PgBookingActivity.this,LandingActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                            }
+                        });
+
                     }
                     else
                     {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideProgressDialog();
+                                UtilMethods.toastS(PgBookingActivity.this,"Unable to connect to Server....Try Again");
+                            }
+                        });
                        // Log.d("status=","false");
-                        UtilMethods.toastS(PgBookingActivity.this,"Unable to connect to Server....Try Again");
+
                     }
 
 

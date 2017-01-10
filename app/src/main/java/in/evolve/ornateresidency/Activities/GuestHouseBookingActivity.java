@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -75,6 +76,7 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
     private GuestHouse guestHouse;
     private SharedPrefUtil sharedPrefUtil;
     private User user;
+    private MaterialDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +127,7 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
         c3=Calendar.getInstance();
 
         sharedPrefUtil=new SharedPrefUtil(GuestHouseBookingActivity.this);
-        user=sharedPrefUtil.getLoggedInUser();
+
 
         checkInLayout.setOnClickListener(new View.OnClickListener() {
 
@@ -193,11 +195,14 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
         });
 
         ghBookingButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                 String url=BASE_URL+"bookguesthouse.php?pgid="+guestHouse.getId()+"&name="+guestHouse.getGhName()
+                showProgressDialog("Connecting...");
+                User user=sharedPrefUtil.getLoggedInUser();
+                 String url=BASE_URL+"bookguesthouse.php?pgid="+guestHouse.getId()+"&name="+user.getUserName()
                          +"&email="+user+"&phone="+user.getUserPhone()+"&date=0"+"&number=0"+"&nrooms=0";
+                url.replaceAll(" ","%20");
+
                 OkHttpClient client=new OkHttpClient();
                 Request request=new Request.Builder()
                         .get()
@@ -210,7 +215,7 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
+                                hideProgressDialog();
                                 UtilMethods.toastS(GuestHouseBookingActivity.this,"Unable to connect to Server....Try Again");
                             }
                         });
@@ -226,13 +231,28 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
 
                             if(jsonObject.getBoolean("status"))
                             {
-                                UtilMethods.toastS(GuestHouseBookingActivity.this,"GuestHouse is Booked For YOU");
-                                GuestHouseBookingActivity.this.finish();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        hideProgressDialog();
+                                        UtilMethods.toastS(GuestHouseBookingActivity.this,"GuestHouse is Booked For YOU");
+                                        Intent intent=new Intent(GuestHouseBookingActivity.this,LandingActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    }
+                                });
+
                             }
                             else
                             {
-                                //Log.d("status=","false");
-                                UtilMethods.toastS(GuestHouseBookingActivity.this,"Unable to connect to Server....Try Again");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        hideProgressDialog();
+                                        UtilMethods.toastS(GuestHouseBookingActivity.this,"Unable to connect to Server....Try Again");
+                                    }
+                                });
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -257,5 +277,23 @@ public class GuestHouseBookingActivity extends AppCompatActivity implements Cons
         if(animationDrawable!=null && !animationDrawable.isRunning())
             animationDrawable.stop();
     }
+
+    private void showProgressDialog(String msg) {
+
+        progressDialog = new MaterialDialog.Builder(GuestHouseBookingActivity.this)
+                .progress(true, 100)
+                .content(msg)
+                .cancelable(false)
+                .build();
+        progressDialog.show();
+    }
+
+    private void hideProgressDialog() {
+
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.cancel();
+        }
+    }
+
 
 }

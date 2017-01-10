@@ -16,10 +16,11 @@ public class GuestHouse implements Serializable{
     private String ghLatitude;
     private String ghLongitude;
     private List<String>  ghFacilities;
-    private Map<String,String> ghRates;
+    private String ghRates;
     private int[] ghImageUrls;
+    private String rate;
 
-    public GuestHouse(String id,String ghName, String ghaddress, String ghLatitude, String ghLongitude, List<String> ghFacilities, Map<String, String> ghRates,int[] ghImageUrls,String terms) {
+    public GuestHouse(String id,String ghName, String ghaddress, String ghLatitude, String ghLongitude, List<String> ghFacilities, String ghRates,int[] ghImageUrls,String terms) {
         this.ghid=id;
         this.ghterms=terms;
         this.ghName = ghName;
@@ -79,15 +80,13 @@ public class GuestHouse implements Serializable{
         this.ghFacilities = ghFacilities;
     }
 
-    public Map<String, String> getGhRates() {
+    public String getGhRates() {
         return this.ghRates;
     }
 
-    public void setGhRates(Map<String, String> ghRates) {
+    public void setGhRates(String ghRates) {
         this.ghRates = ghRates;
     }
-
-
     public int getGhImageUrls() {
         return this.ghImageUrls[0];
     }
@@ -95,4 +94,5 @@ public class GuestHouse implements Serializable{
     public void setGhImageUrls(int[] ghImageUrls) {
         this.ghImageUrls = ghImageUrls;
     }
+
 }

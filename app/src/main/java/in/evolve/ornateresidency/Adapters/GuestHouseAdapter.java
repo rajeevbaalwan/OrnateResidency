@@ -35,7 +35,7 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
 
     @Override
     public PgViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new PgViewHolder(LayoutInflater.from(context).inflate(R.layout.custom_row_single_pg,parent,false));
+        return new PgViewHolder(LayoutInflater.from(context).inflate(R.layout.guest_house_custom_row,parent,false));
     }
 
     @Override
@@ -44,6 +44,7 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
         holder.ghName.setText(list.get(position).getGhName());
         holder.ghAddress.setText(list.get(position).getGhaddress());
         holder.ghImage.setImageResource(R.drawable.landing_image2);
+        holder.ghPrice.setText(list.get(position).getGhRates());
 
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,13 +68,15 @@ public class GuestHouseAdapter extends RecyclerView.Adapter<GuestHouseAdapter.Pg
         TextView ghAddress;
         ImageView ghImage;
         CardView  container;
+        TextView ghPrice;
 
         public PgViewHolder(View itemView) {
             super(itemView);
-            ghName= (TextView) itemView.findViewById(R.id.pg_name);
-            ghAddress= (TextView) itemView.findViewById(R.id.pg_address);
-            ghImage= (ImageView) itemView.findViewById(R.id.pg_image);
-            container = (CardView) itemView.findViewById(R.id.pgContainer);
+            ghName= (TextView) itemView.findViewById(R.id.gh_name);
+            ghAddress= (TextView) itemView.findViewById(R.id.gh_address);
+            ghImage= (ImageView) itemView.findViewById(R.id.gh_image);
+            container = (CardView) itemView.findViewById(R.id.ghContainer);
+            ghPrice= (TextView) itemView.findViewById(R.id.gh_price);
         }
     }
 

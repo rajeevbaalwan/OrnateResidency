@@ -41,6 +41,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     private LinearLayout callUs;
     private Button searchGuestHouseButton;
     private Button searchPgButton;
+    private Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,10 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         overridePendingTransition(R.anim.activity_open_translate,R.anim.activity_close_scale);
 
         fab= (FloatingActionButton) findViewById(R.id.landing_fab);
-        myBookings =(LinearLayout) findViewById(R.id.my_bookings);
         mRevealView= (LinearLayout) findViewById(R.id.fab_layout);
         searchGuestHouseButton = (Button) findViewById(R.id.guest_house_radiobutton);
         searchPgButton = (Button)  findViewById(R.id.pg_radiobutton);
         searchPgButton.setOnClickListener(this);
-        myBookings.setOnClickListener(this);
         searchGuestHouseButton.setOnClickListener(this);
         mRevealView.setVisibility(View.INVISIBLE);
 
@@ -70,6 +69,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         shareApp= (LinearLayout) findViewById(R.id.fab_share_app);
         feedBack= (LinearLayout) findViewById(R.id.fab_feedback);
         callUs = (LinearLayout) findViewById(R.id.fab_call_us);
+        registerButton= (Button) findViewById(R.id.property_register_button);
 
         myAccount.setOnClickListener(this);
         pgList.setOnClickListener(this);
@@ -77,15 +77,15 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         shareApp.setOnClickListener(this);
         feedBack.setOnClickListener(this);
         callUs.setOnClickListener(this);
+        registerButton.setOnClickListener(this);
     }
 
     public  void onClick(View v)
     {
         switch(v.getId()) {
-
-            case R.id.my_bookings:
-                Intent inte = new Intent(LandingActivity.this,MyBookingsActivity.class);
-                startActivity(inte);
+            case R.id.property_register_button:
+                Intent listProperty = new Intent(LandingActivity.this, ListYourPlaceActivity.class);
+                startActivity(listProperty);
                 break;
             case R.id.pg_radiobutton:
 

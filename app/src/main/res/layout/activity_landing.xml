@@ -18,6 +18,8 @@
         layout="@layout/fab_sheet_layout"/>
 
     <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -26,34 +28,43 @@
         android:gravity="center"
         android:id="@+id/landing_radio_button">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/GuestHouse"
             android:textSize="20sp"
             android:buttonTint="#ffffff"
             android:textColor="@android:color/white"
-            android:paddingLeft="60dp"
             android:background="@drawable/landing_round_button"
-            android:paddingRight="60dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:layout_margin="5dp"
             android:id="@+id/guest_house_radiobutton"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pg"
             android:textSize="20sp"
             android:buttonTint="#ffffff"
             android:background="@drawable/landing_round_button"
             android:textColor="@android:color/white"
-            android:paddingLeft="55dp"
-            android:paddingRight="55dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:layout_margin="5dp"
             android:id="@+id/pg_radiobutton"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register Property"
+            android:textSize="20sp"
+            android:buttonTint="#ffffff"
+            android:background="@drawable/landing_round_button"
+            android:textColor="@android:color/white"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_margin="5dp"
+            android:id="@+id/property_register_button"/>
     </LinearLayout>
 
      <android.support.design.widget.FloatingActionButton
